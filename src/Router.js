@@ -2,11 +2,17 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-// Routes
+// Pages
 import Home from "./pages/Home";
 import Form from "./pages/Form";
 import Submitted from "./pages/Submitted";
 
+
+/**
+ * Router for forms.
+ * 
+ * @returns {Object} - Switch router for all three paths.
+ * */
 const Router = () => {
   return (
     <Switch>

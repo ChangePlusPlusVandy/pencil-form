@@ -2,6 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import './Submitted.css';
 
+
+/**
+ * Page that verifies success of form submission.
+ * 
+ * @returns {Object} - Page containing success page.
+ * */
 const Submitted = () => {
   return (
     <div className="centered">
