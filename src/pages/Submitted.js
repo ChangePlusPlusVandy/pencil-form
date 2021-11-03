@@ -1,7 +1,7 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import './Submitted.css';
-
+import { useAuth } from "../AuthContext";
 
 /**
  * Page that verifies success of form submission.
@@ -9,11 +9,14 @@ import './Submitted.css';
  * @returns {Object} - Page containing success page.
  * */
 const Submitted = () => {
+
+  const { clearTeacher, teacher } = useAuth();
+
   return (
     <div className="centered">
-      This is the success page
+      {teacher && <p>Thanks, {teacher.firstName}!</p>}
       <br />
-      <Link to="/"><button>Go home</button></Link>
+      <Link to="/"><button onClick={() => {clearTeacher()}}>Go home</button></Link>
     </div>
   );
 };

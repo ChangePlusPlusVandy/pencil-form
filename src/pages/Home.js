@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import './Home.css';
 
 import { getTeacherByID } from './api-form.js'
+import { useAuth } from "../AuthContext";
 
 
 /**
@@ -11,6 +12,8 @@ import { getTeacherByID } from './api-form.js'
  * @returns {Object} - Page containing homepage.
  * */
 const Home = () => {
+
+  const { populateTeacher } = useAuth();
 
   const history = useHistory();
 
@@ -30,6 +33,7 @@ const Home = () => {
       else {
         // history.push(`/form/${teacherID}`);
         setError("");
+        populateTeacher(data);
         history.push(`/form`);
       }
     })

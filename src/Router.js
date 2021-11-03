@@ -6,6 +6,8 @@ import { Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Form from "./pages/Form";
 import Submitted from "./pages/Submitted";
+import { AuthProvider } from "./AuthContext";
+import ProtectedRoute from "./ProtectedRoute.js";
 
 
 /**
@@ -15,11 +17,13 @@ import Submitted from "./pages/Submitted";
  * */
 const Router = () => {
   return (
-    <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/form" component={Form} />
-        <Route exact path="/submitted" component={Submitted} />
-    </Switch>
+    <AuthProvider>
+      <Switch>
+          <Route exact path="/" component={Home} />
+          <ProtectedRoute exact path="/form" component={Form} />
+          <ProtectedRoute exact path="/submitted" component={Submitted} />
+      </Switch>
+    </AuthProvider>
   );
 };
 
