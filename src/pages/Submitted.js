@@ -11,15 +11,15 @@ import { useAuth } from "../AuthContext";
  * */
 const Submitted = () => {
 
-  const { clearTeacher, teacher } = useAuth();
+    const { clearTeacher, teacher } = useAuth();
 
-  return (
-    <div className="centered">
-      {teacher && <p>Thanks, {teacher.firstName}!</p>}
-      <br />
-      <Link to="/"><button onClick={() => {clearTeacher()}}>Go home</button></Link>
-    </div>
-  );
+    return (
+      <div className="centered">
+        {teacher && <p>Thanks, {teacher.firstName}!</p>}
+        <br />
+        <Link to="/"><button onClick={() => {clearTeacher()}}>Go home</button></Link>
+      </div>
+    );
 };
 
 export default Submitted;
