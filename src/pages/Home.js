@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
 import './Home.css';
 
 import { getTeacherByID } from './api-form.js'
