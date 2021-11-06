@@ -12,6 +12,7 @@ import { useAuth } from "../AuthContext";
  * 
  * @returns {Object} - Page containing homepage.
  * */
+
 const Home = () => {
 
   const { populateTeacher } = useAuth();
