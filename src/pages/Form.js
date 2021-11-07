@@ -22,12 +22,22 @@ const ItemCard = (props) => {
 
   function incrementUp(){
     setNumItems(numItems + 1);
+    //  Not sure why the following code needs the plus one, but its the only way this works correctly
+    checkValue(numItems + 1);
   }
 
   function incrementDown(){
     setNumItems(numItems - 1);
+    checkValue(numItems - 1);
   }
-
+  
+  function checkValue(target){
+    if (target > props.itemLimit){
+      document.getElementById(`limit${props.id}`).style.color = 'red';
+    } else {
+      document.getElementById(`limit${props.id}`).style.color = 'black';
+    }
+  }
 
   return(
     <Card variant='outlined'>
@@ -35,27 +45,28 @@ const ItemCard = (props) => {
         <h1>
           {props.itemName}
         </h1>
-        <h5>Limit: {props.itemLimit}</h5>
+        <h5 id={`limit${props.id}`}>Limit: {props.itemLimit}</h5>
         <Button variant='outlined' size='small' onClick={incrementDown}>-</Button>
-        <input type='number' name={props.itemName} id={props.itemName} value={numItems} onChange={(e) => setNumItems(e.target.value)}></input>
+        <input type='number' name={props.itemName} id={props.itemName} value={numItems} onChange={(e) => {setNumItems(e.target.value); checkValue(e.target.value)}}></input>
         <Button variant='outlined' size='small' onClick={incrementUp}>+</Button>
       </CardContent>
     </Card>
   )
 }
+
 const sampleJson = {
   'itemName': 'Pencils',
   'itemLimit': 10
 }
+const sampleArr = [sampleJson, sampleJson, sampleJson, sampleJson, sampleJson]
 
 const Form = () => {
   const { teacher } = useAuth();
   return (
-    
     <div className="centered">
     {teacher && <p>Hello, {teacher.firstName}!</p>}
       <br />
-      <ItemCard itemName={sampleJson.itemName} itemLimit={sampleJson.itemLimit}/>
+      {sampleArr.map(function(item, index){return (<ItemCard itemName={item.itemName} itemLimit={item.itemLimit} id={index}/>)})}
       <Link to="/submitted"><button>Submit</button></Link>
     </div>
   );
