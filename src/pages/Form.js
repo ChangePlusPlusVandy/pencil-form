@@ -21,14 +21,13 @@ const ItemCard = (props) => {
   const [numItems, setNumItems] = useState(0);
 
   function incrementUp(){
-    setNumItems(numItems + 1);
-    //  Not sure why the following code needs the plus one, but its the only way this works correctly
     checkValue(numItems + 1);
-  }
+    setNumItems(numItems + 1);
+  }g
 
   function incrementDown(){
-    setNumItems(numItems - 1);
     checkValue(numItems - 1);
+    setNumItems(numItems - 1);
   }
   
   function checkValue(target){
