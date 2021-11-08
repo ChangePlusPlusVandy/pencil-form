@@ -23,7 +23,7 @@ const ItemCard = (props) => {
   function incrementUp(){
     checkValue(numItems + 1);
     setNumItems(numItems + 1);
-  }g
+  }
 
   function incrementDown(){
     checkValue(numItems - 1);
