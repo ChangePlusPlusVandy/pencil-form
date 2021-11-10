@@ -6,9 +6,10 @@ import './Form.css';
 import { useAuth } from "../AuthContext";
 
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import Divider from '@mui/material/Divider';
 
 /**
  * Form page containing form with school items for teacher.
@@ -41,13 +42,13 @@ const ItemCard = (props) => {
   return(
     <Card variant='outlined'>
       <CardContent>
-        <h1>
+        <h2>
           {props.itemName}
-        </h1>
-        <h5 id={`limit${props.id}`}>Limit: {props.itemLimit}</h5>
-        <Button variant='outlined' size='small' onClick={incrementDown}>-</Button>
-        <input type='number' name={props.itemName} id={props.itemName} value={numItems} onChange={(e) => {setNumItems(e.target.value); checkValue(e.target.value)}}></input>
-        <Button variant='outlined' size='small' onClick={incrementUp}>+</Button>
+        </h2>
+        <h5 id={`limit${props.id}`} class={`$props.itemName`}>Limit: {props.itemLimit}</h5>
+        <Button variant='outlined' size='small' id='incrementDown' onClick={incrementDown}>—</Button>
+        <input type='number' name={props.itemName} id={`${props.id}${props.itemName}`} value={numItems} onChange={(e) => {setNumItems(e.target.value); checkValue(e.target.value)}}></input>
+        <Button variant='outlined' size='small' id='incrementUp' onClick={incrementUp}>+</Button>
       </CardContent>
     </Card>
   )
@@ -57,18 +58,39 @@ const sampleJson = {
   'itemName': 'Pencils',
   'itemLimit': 10
 }
+
 const sampleArr = [sampleJson, sampleJson, sampleJson, sampleJson, sampleJson]
 
+let itemsObj = {};
+
 const Form = () => {
+
+  const submitAll = () => {
+    for (let index = 0; index < sampleArr.length; index++){
+      var itemName = `${index}${sampleArr[index].itemName}`;
+      var itemValue = document.getElementById(itemName).value;
+      itemsObj[itemName] = itemValue;
+    }
+    console.log(itemsObj)
+  }
+
   const { teacher } = useAuth();
   return (
     <div className="centered">
-    {teacher && <p>Hello, {teacher.firstName}!</p>}
+    {teacher && <h1>Hello, {teacher.firstName}!</h1>}
       <br />
-      {sampleArr.map(function(item, index){return (<ItemCard itemName={item.itemName} itemLimit={item.itemLimit} id={index}/>)})}
-      <Link to="/submitted"><button>Submit</button></Link>
+      <Stack 
+      direction='column' 
+      spacing={2}
+      divider={<Divider orientation="vertical" flexItem />}
+      id='itemStack'>
+        {sampleArr.map(function(item, index){return (<ItemCard id={index} itemName={item.itemName} itemLimit={item.itemLimit} class='itemCard' />)})}
+        <Link to="/submitted"><Button variant='contained' id='submit' onClick={submitAll}>Submit</Button></Link>
+      </Stack>
     </div>
   );
 };
+
+export { itemsObj };
 
 export default Form;

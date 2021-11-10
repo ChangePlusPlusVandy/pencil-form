@@ -4,3 +4,31 @@
     text-align: center;
     font-family: 'Bitter', serif;
 }
+
+#submit {
+    text-decoration: none;
+    width: 50%;
+    margin-bottom: 1%;
+}
+
+#incrementUp {
+    background-color: palegreen;
+    color: black;
+    text-decoration: bold;
+    font-size: large;
+}
+
+#incrementDown {
+    background-color: tomato;
+    color: black;
+    text-decoration: bold;
+    font-size: large;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* #itemStack{
+    background-color: blue;
+} */

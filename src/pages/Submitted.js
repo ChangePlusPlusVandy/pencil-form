@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import './Submitted.css';
 import { useAuth } from "../AuthContext";
 
+import itemsObj from "./Form"
+
 /**
  * Page that verifies success of form submission.
  * 
