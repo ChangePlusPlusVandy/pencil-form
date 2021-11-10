@@ -7,6 +7,7 @@ import { getTeacherByID } from './api-form.js'
 import { useAuth } from "../AuthContext";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { Box } from "@mui/system";
 
 
 /**
@@ -56,7 +57,7 @@ const Home = () => {
       <p id='label'>Please enter your PENCIL ID to get started.</p><br/>
         <TextField variant="outlined"  name="teacherid" placeholder="PENCIL ID" value={teacherID} onChange={(event) => setTeacherID(event.target.value)} />
         <br/>
-        <Button id="submitButton" variant="contained" type="submit">Go to form</Button>
+        <button id="submitButton" variant="contained" type="submit">Go to form</button>
       </form>
       {error && <p>{error}</p>}
     </div>

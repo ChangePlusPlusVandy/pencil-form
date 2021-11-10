@@ -46,9 +46,9 @@ const ItemCard = (props) => {
           {props.itemName}
         </h2>
         <h5 id={`limit${props.id}`} class={`$props.itemName`}>Limit: {props.itemLimit}</h5>
-        <Button variant='outlined' size='small' id='incrementDown' onClick={incrementDown}>—</Button>
+        <button className='roundButton' onClick={incrementDown} id='incrementDown'>—</button>
         <input type='number' name={props.itemName} id={`${props.id}${props.itemName}`} value={numItems} onChange={(e) => {setNumItems(e.target.value); checkValue(e.target.value)}}></input>
-        <Button variant='outlined' size='small' id='incrementUp' onClick={incrementUp}>+</Button>
+        <button className='roundButton' onClick={incrementUp} id='incrementUp'>+</button>
       </CardContent>
     </Card>
   )
