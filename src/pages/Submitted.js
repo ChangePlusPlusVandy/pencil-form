@@ -5,6 +5,7 @@ import './Submitted.css';
 import { useAuth } from "../AuthContext";
 
 import itemsObj from "./Form"
+import Button from '@mui/material/Button';
 
 /**
  * Page that verifies success of form submission.
@@ -17,9 +18,9 @@ const Submitted = () => {
 
     return (
       <div className="centered">
-        {teacher && <p>Thanks, {teacher.firstName}!</p>}
+        {teacher && <p id='thanks'>Thanks, {teacher.firstName}!</p>}
         <br />
-        <Link to="/"><button onClick={() => {clearTeacher()}}>Go home</button></Link>
+        <Link to="/"><Button variant="contained" onClick={() => {clearTeacher()}}>Go home</Button></Link>
       </div>
     );
 };

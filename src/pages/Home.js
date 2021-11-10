@@ -5,7 +5,8 @@ import './Home.css';
 
 import { getTeacherByID } from './api-form.js'
 import { useAuth } from "../AuthContext";
-
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 
 /**
@@ -30,6 +31,10 @@ const Home = () => {
    * @param {Object} event - Event object.
    * */
   const handleSubmit = (event) => {
+    if (teacherID === ""){
+      alert('Please enter your PENCIL ID.')
+      return;
+    }
     event.preventDefault();
     getTeacherByID(teacherID).then((data) => {
       if(data.error) setError(data.error);
@@ -44,13 +49,14 @@ const Home = () => {
 
   return (
     <div className="centered">
-      This is the landing page
+      <h2>Welcome to</h2>
+      <h1>PENCIL</h1>
       <br />
       <form onSubmit={handleSubmit}>
-      <label for="tid">Teacher ID: </label><br/>
-        <input type="number" name="teacherid" placeholder="Teacher ID" value={teacherID} onChange={(event) => setTeacherID(event.target.value)} />
-        <button type="submit">Go to form</button>
-        
+      <p id='label'>Please enter your PENCIL ID to get started.</p><br/>
+        <TextField variant="outlined"  name="teacherid" placeholder="PENCIL ID" value={teacherID} onChange={(event) => setTeacherID(event.target.value)} />
+        <br/>
+        <Button id="submitButton" variant="contained" type="submit">Go to form</Button>
       </form>
       {error && <p>{error}</p>}
     </div>
