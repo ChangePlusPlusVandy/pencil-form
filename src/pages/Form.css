@@ -13,18 +13,24 @@
     font-size: 20px;
 }
 
+.roundButton {
+    border-radius: 50%;
+    width: 40;
+    height: 40;
+}
+
 #incrementUp {
     background-color: palegreen;
-    color: black;
+    /* color: black;
     text-decoration: bold;
-    font-size: large;
+    font-size: large; */
 }
 
 #incrementDown {
     background-color: tomato;
-    color: black;
+    /* color: black;
     text-decoration: bold;
-    font-size: large;
+    font-size: large; */
 }
 
 a{
