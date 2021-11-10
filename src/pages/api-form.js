@@ -6,6 +6,8 @@ const dummyTeacherObject = {
   school_id: "fgh136Dbest",
 };
 
+// test
+
 /**
  * Makes GET request to API to get teacher information.
  * @param  {string} id - Teacher ID to be queried by backend.
