@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import './Home.css';
@@ -22,8 +22,8 @@ const Home = () => {
 
   const history = useHistory();
 
-  const [teacherID, setTeacherID] = React.useState(""); //ID of teacher editable by form
-  const [error, setError] = React.useState("");
+  const [teacherID, setTeacherID] = useState(""); //ID of teacher editable by form
+  const [error, setError] = useState("");
 
 
   /**
