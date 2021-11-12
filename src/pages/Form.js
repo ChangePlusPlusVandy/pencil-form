@@ -1,15 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Form.css";
 import { useAuth } from "../AuthContext";
 
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import Divider from "@mui/material/Divider";
+// icons from react-icons
+import { FaPlus, FaMinus } from "react-icons/fa";
 
 /**
  * Form page containing form with school items for teacher.
@@ -18,58 +15,61 @@ import Divider from "@mui/material/Divider";
  * */
 
 const ItemCard = (props) => {
-  // clarifications needed from Joel:
-  // 1. Do we need distinction between packs and items?
-  // 2. Is the limit a hard limit? Do we disable the button if limit is reached?
-  // const [isPack, setIsPack] = useState(false);
   const [numItems, setNumItems] = useState(0);
-  const [limitReached, setLimitReached] = useState(false);
 
-  function incrementUp() {
-    checkValue(numItems + 1);
-    setNumItems(numItems + 1);
+  function increment() {
+    setNumItems((currNumItems) => currNumItems + 1);
   }
 
-  function incrementDown() {
-    checkValue(numItems - 1);
-    setNumItems(numItems - 1);
+  function decrement() {
+    setNumItems((currNumItems) => currNumItems - 1);
   }
 
-  function checkValue(target) {
-    if (target > props.itemLimit) {
-      setLimitReached(true);
-      document.getElementById(`limit${props.id}`).style.color = "red";
+  useEffect(() => {
+    if (numItems > props.itemLimit) {
+      document.getElementById(`limit${props.id}`).style.color = "#F04747";
     } else {
-      setLimitReached(false);
-      document.getElementById(`limit${props.id}`).style.color = "black";
+      document.getElementById(`limit${props.id}`).style.color = "#555555";
     }
-  }
+  }, [numItems, props.id, props.itemLimit]);
 
   return (
-    <Card variant="outlined">
-      <CardContent>
-        <h2>{props.itemName}</h2>
-        <h5 id={`limit${props.id}`} class={`$props.itemName`}>
-          Limit: {props.itemLimit}
-        </h5>
-        {/* make a round button */}
-        <button onClick={incrementDown} disabled={limitReached}>
-          -
-        </button>
-
+    <div className="cardContainer">
+      <text className="itemName">{props.itemName}</text>
+      <br />
+      <text className="itemLimit" id={`limit${props.id}`}>
+        Limit: {props.itemLimit}
+      </text>
+      <div className="itemCountContainer">
+        {numItems === 0 ? (
+          <button id="disabled" className="roundButton" disabled={true}>
+            <FaMinus size={100} />
+          </button>
+        ) : (
+          <button
+            id="incrementDown"
+            className="roundButton"
+            onClick={decrement}
+          >
+            <FaMinus size={100} color={"#4B4B4B"} />
+          </button>
+        )}
         <input
+          className="itemCountInputBox"
           type="number"
           name={props.itemName}
           id={`${props.id}${props.itemName}`}
           value={numItems}
           onChange={(e) => {
             setNumItems(e.target.value);
-            checkValue(e.target.value);
           }}
         ></input>
-        <button onClick={incrementUp}>-</button>
-      </CardContent>
-    </Card>
+        <button id="incrementUp" className="roundButton" onClick={increment}>
+          <FaPlus size={100} color={"#4B4B4B"} />
+        </button>
+      </div>
+      <div className="hozizontalLine"></div>
+    </div>
   );
 };
 
@@ -94,31 +94,26 @@ const Form = () => {
 
   const { teacher } = useAuth();
   return (
-    <div className="centered">
-      {teacher && <h1>Hello, {teacher.firstName}!</h1>}
-      <br />
-      <Stack
-        direction="column"
-        spacing={2}
-        divider={<Divider orientation="vertical" flexItem />}
-        id="itemStack"
-      >
+    <div className="pageContainer">
+      <div className="header">
+        {teacher && <h1>Hello, {teacher.firstName}!</h1>}
+      </div>
+      <div className="formContainer">
         {sampleArr.map(function (item, index) {
           return (
             <ItemCard
               id={index}
               itemName={item.itemName}
               itemLimit={item.itemLimit}
-              class="itemCard"
             />
           );
         })}
         <Link to="/submitted">
-          <Button variant="contained" id="submit" onClick={submitAll}>
+          <button id="submit" onClick={submitAll}>
             Submit
-          </Button>
+          </button>
         </Link>
-      </Stack>
+      </div>
     </div>
   );
 };
