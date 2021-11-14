@@ -107,7 +107,7 @@ const Form = () => {
       var itemValue = document.getElementById(itemName).value;
       itemsObj[itemName] = itemValue;
     }
-    let formObj = {
+    let completeObj = {
       items: itemsObj,
       teacherId: teacher.teacherId,
       schoolId: teacher.schoolId
