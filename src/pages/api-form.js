@@ -1,9 +1,9 @@
 const dummyTeacherObject = {
-  teacher_id: 666,
-  first_name: "John",
-  last_name: "Doe",
+  teacherID: 666,
+  firstName: "John",
+  lastName: "Doe",
   email: "john.doe@vanderbilt.edu",
-  school_id: "fgh136Dbest",
+  schoolId: "fgh136Dbest",
 };
 
 // test
