@@ -17,10 +17,13 @@ const Submitted = () => {
     const { clearTeacher, teacher } = useAuth();
 
     return (
-      <div className="centered">
-        {teacher && <p id='thanks'>Thanks, {teacher.firstName}!</p>}
+      <div className="submitted">
+        {teacher && <p id='thanks'>Thank you for shopping with PENCIL, {teacher.firstName}!</p>}
         <br />
-        <Link to="/"><Button variant="contained" onClick={() => {clearTeacher()}}>Go home</Button></Link>
+        <div className="firstLine" />
+        <div className="pencilIcon" />
+        <div className="secondLine" />
+        <button className="backHome" variant="contained" onClick={() => {clearTeacher()}}><Link className="link" to="/">Back to home</Link></button>
       </div>
     );
 };

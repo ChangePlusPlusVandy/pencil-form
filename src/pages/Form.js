@@ -89,6 +89,8 @@ const Form = () => {
       var itemValue = document.getElementById(itemName).value;
       itemsObj[itemName] = itemValue;
     }
+    let transaction_id = 213;
+    itemsObj[transaction_id] = 213;
     console.log(itemsObj);
   };
 
