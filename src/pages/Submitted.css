@@ -10,7 +10,7 @@
 }
 
 #thanks {
-    margin-top: 3em;
+    margin-top: 4.5em;
     text-align: center;
     width: 65%;
     line-height: 131%;
@@ -40,27 +40,33 @@
     text-decoration: bold;
 }
 
-/* .firstLine{
+.firstLine{
+    position: fixed;
     background: url(./../assets/LineCrop.svg);
-    width: 35em;
-    margin-top: 20em;
-    height: 30em;
-    margin-left: 3em;
-} */
+    width: 130%;
+    margin-top: 130%;
+    height: 55em;
+    margin-left: 13em;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
 
 .pencilIcon{
     background: url(../assets/pencil-icon.svg) no-repeat;
-    width: 35em;
-    margin-top: 20em;
+    width: 90%;
+    margin-top: 9em;
     height: 30em;
     margin-left: 3em;
+    z-index: 1;
 }
 
-/* .secondLine{
-    position: absolute;
+.secondLine{
+    position: fixed;
     background: url(./../assets/LineCrop2.svg);
-    width: 35em;
-    margin-top: 20em;
-    height: 30em;
-    margin-left: 3em;
-} */
+    width: 130.2%;
+    margin-top: 129.8%;
+    height: 53.8em;
+    margin-left: 13.2em;
+    background-repeat: no-repeat;
+    z-index: 2
+}

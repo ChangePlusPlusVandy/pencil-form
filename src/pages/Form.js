@@ -105,7 +105,7 @@ const Form = () => {
     for (let index = 0; index < sampleArr.length; index++) {
       var itemName = `${index}${sampleArr[index].itemName}`;
       var itemValue = document.getElementById(itemName).value;
-      itemsObj[itemName] = itemValue;
+      itemsObj[`${sampleArr[index].itemName}`] = itemValue;
     }
     let completeObj = {
       items: itemsObj,
