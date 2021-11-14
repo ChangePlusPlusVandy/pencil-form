@@ -33,6 +33,7 @@ const Home = () => {
    * */
   const handleSubmit = (event) => {
     if (teacherID === ""){
+      event.preventDefault();
       alert('Please enter your PENCIL ID.')
       return;
     }
@@ -58,7 +59,7 @@ const Home = () => {
       <div className="idForm">
         <form onSubmit={handleSubmit}>
         <p id='label'>Please enter your PENCIL ID to get started.</p><br/>
-          <input variant="outlined"  name="teacherid" placeholder="PENCIL ID" value={teacherID} onChange={(event) => setTeacherID(event.target.value)} />
+          <input type='number' pattern="[0-9]*" variant="outlined"  className='noselect' name="teacherid" placeholder="PENCIL ID" value={teacherID} onChange={(event) => setTeacherID(event.target.value)} />
           <br/>
           <button id="submitButton" variant="contained" type="submit">Go to form</button>
         </form>

@@ -14,6 +14,21 @@ import { FaPlus, FaMinus } from "react-icons/fa";
  * @returns {Object} - Page containing form.
  * */
 
+function goodbye(e) {
+  //  Alerts the user if they try to leave the page.
+  if(!e) e = window.event;
+  e.cancelBubble = true;
+  e.returnValue = 'You sure you want to leave?'; //This is displayed on the dialog
+
+  //e.stopPropagation works in Firefox.
+  if (e.stopPropagation) {
+      e.stopPropagation();
+      e.preventDefault();
+  }
+}
+
+window.onbeforeunload=goodbye; 
+
 const ItemCard = (props) => {
   const [numItems, setNumItems] = useState(0);
 
@@ -28,8 +43,10 @@ const ItemCard = (props) => {
   useEffect(() => {
     if (numItems > props.itemLimit) {
       document.getElementById(`limit${props.id}`).style.color = "#F04747";
+      document.getElementById(`${props.id}${props.itemName}`).style.border = "4px solid #F04747";
     } else {
       document.getElementById(`limit${props.id}`).style.color = "#555555";
+      document.getElementById(`${props.id}${props.itemName}`).style.border = "4px solid #DCDCDC";
     }
   }, [numItems, props.id, props.itemLimit]);
 
@@ -41,7 +58,7 @@ const ItemCard = (props) => {
         Limit: {props.itemLimit}
       </text>
       <div className="itemCountContainer">
-        {numItems === 0 ? (
+        {numItems <= 0 ? (
           <button id="disabled" className="roundButton" disabled={true}>
             <FaMinus size={100} />
           </button>
@@ -55,7 +72,8 @@ const ItemCard = (props) => {
           </button>
         )}
         <input
-          className="itemCountInputBox"
+          className="itemCountInputBox noselect"
+          pattern="[0-9]*"
           type="number"
           name={props.itemName}
           id={`${props.id}${props.itemName}`}
@@ -110,7 +128,7 @@ const Form = () => {
             />
           );
         })}
-        <Link to="/submitted">
+        <Link class='submitLink' to="/submitted">
           <button id="submit" onClick={submitAll}>
             Submit
           </button>
