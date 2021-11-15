@@ -55,8 +55,8 @@ const Home = () => {
         <h1>PENCIL</h1>
       </div>
       <br />
-      <div className="idForm">
-        <form onSubmit={handleSubmit}>
+      <div className="idFormBox">
+        <form onSubmit={handleSubmit} id="idForm">
         <p id='label'>Please enter your PENCIL ID to get started.</p><br/>
           <input variant="outlined"  name="teacherid" placeholder="PENCIL ID" value={teacherID} onChange={(event) => setTeacherID(event.target.value)} />
           <br/>
