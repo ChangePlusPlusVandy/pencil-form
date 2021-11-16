@@ -50,15 +50,19 @@ const Home = () => {
 
   return (
     <div className="centered">
-      <h2>Welcome to</h2>
-      <h1>PENCIL</h1>
+      <div id="welcomeMessage">
+        <h2>Welcome to</h2>
+        <h1>PENCIL</h1>
+      </div>
       <br />
-      <form onSubmit={handleSubmit}>
-      <p id='label'>Please enter your PENCIL ID to get started.</p><br/>
-        <TextField variant="outlined"  name="teacherid" placeholder="PENCIL ID" value={teacherID} onChange={(event) => setTeacherID(event.target.value)} />
-        <br/>
-        <button id="submitButton" variant="contained" type="submit">Go to form</button>
-      </form>
+      <div className="idFormBox">
+        <form onSubmit={handleSubmit} id="idForm">
+        <p id='label'>Please enter your PENCIL ID to get started.</p><br/>
+          <input variant="outlined"  name="teacherid" placeholder="PENCIL ID" value={teacherID} onChange={(event) => setTeacherID(event.target.value)} />
+          <br/>
+          <button id="submitButton" variant="contained" type="submit">Go to form</button>
+        </form>
+      </div>
       {error && <p>{error}</p>}
     </div>
   );
