@@ -1,15 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Bitter&family=Roboto&display=swap');
 
+
+/* FIXME: Center everything!!!!*/
 #signinPage {
     overflow: hidden;
 }
 
 .centered {
+    background-color: #E5E5E5;
+    position: relative;
     text-align: center;
     font-family: 'Bitter', serif;
     font-size: 48px;
-    width: 100%;
-    min-height: 100%;
+    width: 100vw;
+    height: 100vh;
+    left: 0%;
+    top: 0%;
 }
 
 h1 {
@@ -26,13 +32,15 @@ p {
     font-family: 'Roboto', sans-serif;
 }
 
+/* Fixme have this button change according to contents of input box*/
+/* FIXME: Also eventually use absolute positioning*/
 #submitButton {
     position: relative;
-    bottom: .1em;
-    bottom: -32vh;
+    bottom: -16em;
+    left: 3em;
     font-size: 1em;
     padding: .5em 4em .5em 4em;
-    margin: 1em 0em 1em 0em;
+    margin: 5em 0em 5em 0em;
     background-color: #71C3E7;
     border: None;
     border-radius: 1em;
@@ -41,27 +49,46 @@ p {
     font-family: inherit;
 }
 
-.idForm {
-    height: 58vh;
+.idFormBox {
+    position: absolute;
+    bottom: 0;
+    height: 70vh;
+    width: 100%;
     justify-content: center;
     align-items: center;
     background: white;
     box-shadow: 0px 8px 20px 20px rgba(218, 218, 218, 0.25);
     border-radius: 2em 2em 0px 0px;
-    padding: 1em;
+    padding: 0em;
 }
 
+#idForm {
+    position: absolute;
+    justify-content: center;
+    top: 0em;
+    height: 30vh;
+}
+
+/* FIXME: rename */
 #label {
-    position: relative;
-    top: .35em;
+    position: absolute;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    width: 90%;
+    top: 2em;
     color:rgba(0, 0, 0, 0.75); 
 }
 
 input[name=teacherid] {
-    position: relative;
-    top: .9em;
-    width: 78vw;
-    height: 100%;
+    position: absolute;
+    /*display: inline-block;*/
+    top: 4em;
+    margin-top: 2em;
+    margin-left: 3em;
+    margin-right: 3em;
+    left: 0%;
+    width: 100%;
+    height: 2em;
     padding: 20px;
     background: #F3F3F3;
     border: .1em solid #DCDCDC;
@@ -71,8 +98,14 @@ input[name=teacherid] {
     font-size: 1em;
     font-family: inherit;
     outline-color: #71C3E7;
-}
+} 
 
+#root {
+    position: relative;
+    min-height: 100%;
+    height: 100%;
+    bottom: zero;
+}
 
 #welcomeMessage {
     position: relative;
