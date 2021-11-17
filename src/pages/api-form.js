@@ -1,9 +1,9 @@
 const dummyTeacherObject = {
   teacherId: 666,
-  firstName: "John",
-  lastName: "Doe",
-  email: "john.doe@vanderbilt.edu",
-  schoolId: "fgh136Dbest",
+  firstName: 'John',
+  lastName: 'Doe',
+  email: 'john.doe@vanderbilt.edu',
+  schoolId: 'fgh136Dbest',
 };
 
 // test
@@ -21,7 +21,8 @@ const getTeacherByID = async (id) => {
   // } catch(err) {
   //     console.log(err);
   // }
+  console.log(id);
   return dummyTeacherObject;
 };
 
-export { getTeacherByID };
+export default getTeacherByID;
