@@ -33,6 +33,7 @@ const Home = () => {
    * */
   const handleSubmit = (event) => {
     if (teacherID === ""){
+      event.preventDefault();
       alert('Please enter your PENCIL ID.')
       return;
     }

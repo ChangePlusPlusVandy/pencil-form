@@ -1,5 +1,5 @@
 const dummyTeacherObject = {
-  teacherID: 666,
+  teacherId: 666,
   firstName: "John",
   lastName: "Doe",
   email: "john.doe@vanderbilt.edu",
