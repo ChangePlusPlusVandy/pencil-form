@@ -25,12 +25,10 @@
 .backHome {
     background-color: #71C3E7;
     width: 80%;
-    
-    position: absolute;
+
     font-size: 2.75em;
-    bottom: 1em;
     padding: .5em 4em .5em 4em;
-    margin: 1em 0em 1em 0em;
+    margin: 7em 0em 1em 0em;
     border: None;
     border-radius: 1em;
     filter: drop-shadow(0px 20px 18px rgba(128, 128, 128, 0.25));
@@ -44,7 +42,7 @@
     position: fixed;
     background: url(./../assets/LineCrop.svg);
     width: 130%;
-    margin-top: 130%;
+    margin-top: 46%;
     height: 55em;
     margin-left: 13em;
     background-repeat: no-repeat;
@@ -53,18 +51,22 @@
 
 .pencilIcon{
     background: url(../assets/pencil-icon.svg) no-repeat;
-    width: 90%;
+    background-size: contain;
+    text-align: center;
+    display: block;
+    width: 80%;
+    height: 50em;
     margin-top: 9em;
-    height: 30em;
-    margin-left: 3em;
     z-index: 1;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .secondLine{
     position: fixed;
     background: url(./../assets/LineCrop2.svg);
     width: 130.2%;
-    margin-top: 129.8%;
+    margin-top: 45.8%;
     height: 53.8em;
     margin-left: 13.2em;
     background-repeat: no-repeat;
