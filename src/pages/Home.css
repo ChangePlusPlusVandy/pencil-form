@@ -34,10 +34,14 @@ p {
 /* Fixme have this button change according to contents of input box*/
 /* FIXME: Also eventually use absolute positioning*/
 #submitButton {
-  position: relative;
+  position: absolute;
   top: 40vh;
   font-size: 1em;
-  padding: 0.2em 4em 0.2em 4em;
+  padding: 0.5em 4vw 0.5em 4vw;
+  width: 70%;
+  height: 2em;
+  left: 0;
+  margin: 0 15%;
   background-color: #71c3e7;
   border: None;
   border-radius: 1em;
@@ -48,8 +52,10 @@ p {
 
 .idFormBox {
   position: absolute;
-  bottom: 0;
-  height: 70vh;
+  margin: 0 0 0 0;
+  top: 5vh;
+  position: relative;
+  height: 80vh;
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -61,7 +67,9 @@ p {
 
 #idForm {
   position: absolute;
-  margin: 0 20vw;
+  width: 70%;
+  margin: 0 15%;
+  height: 50vh;
   justify-content: center;
   top: 4vh;
 }
