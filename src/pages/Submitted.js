@@ -20,9 +20,11 @@ const Submitted = () => {
       <div className="submitted">
         {teacher && <p id='thanks'>Thank you for shopping with PENCIL, {teacher.firstName}!</p>}
         <br />
-        <div className="secondLine" />
-        <div className="pencilIcon"></div>
-        <div className="firstLine" /> 
+        <div className="fullPencil">
+          <div className="secondLine" />
+          <div className="pencilIcon"/>
+          <div className="firstLine" /> 
+        </div>
         <button className="backHome" variant="contained" onClick={() => {clearTeacher()}}><Link className="link" to="/">Back to home</Link></button>
       </div>
     );
