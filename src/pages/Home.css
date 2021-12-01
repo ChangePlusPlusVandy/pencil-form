@@ -32,10 +32,8 @@ p {
 }
 
 /* Fixme have this button change according to contents of input box*/
-/* FIXME: Also eventually use absolute positioning*/
 #submitButton {
   position: absolute;
-  /* top: 50vh; */
   bottom: 18%;
   font-size: 1em;
   padding: 0.5em 4vw 0.5em 4vw;
@@ -54,9 +52,9 @@ p {
 .idFormBox {
   position: absolute;
   margin: 0 0 0 0;
-  top: 0%;
+  top: 16%;
   position: relative;
-  height: 80%;
+  height: 75%;
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -64,6 +62,33 @@ p {
   box-shadow: 0px 8px 20px 20px rgba(218, 218, 218, 0.25);
   border-radius: 2em 2em 0px 0px;
   padding: 0em;
+}
+
+#welcomeMessage {
+  position: relative;
+  top: 5.5em;
+  left: 4em;
+  height: 10%;
+  width: 70%;
+}
+
+#welcome {
+  position: absolute;
+  font-family: Roboto;
+  font-size: 0.95em;
+  letter-spacing: 3px;
+  color: #2b2b2b;
+  fill-opacity: 75%;
+  left: 28%;
+}
+
+#pencil {
+  position: absolute;
+  font-size: 2.8em;
+  top: 25%;
+  left: 28%;
+  width: 70%;
+  margin: 0 0;
 }
 
 #idForm {
@@ -106,9 +131,4 @@ input[name='teacherid'] {
   min-height: 100%;
   height: 100%;
   bottom: zero;
-}
-
-#welcomeMessage {
-  position: relative;
-  padding: 1.5em;
 }

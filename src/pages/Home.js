@@ -46,8 +46,8 @@ const Home = () => {
   return (
     <div className="centered">
       <div id="welcomeMessage">
-        <h2>Welcome to</h2>
-        <h1>PENCIL</h1>
+        <h2 id="welcome">Welcome to</h2>
+        <h1 id="pencil">PENCIL</h1>
       </div>
       <br />
       <div className="idFormBox">
