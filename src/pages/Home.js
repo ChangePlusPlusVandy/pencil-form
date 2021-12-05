@@ -69,7 +69,7 @@ const Home = () => {
             onChange={(event) => setTeacherID(event.target.value)}
           />
           <br />
-          <button id="submitButton" disabled variant="contained" type="submit">
+          <button id="submitButton" type="submit">
             Submit
           </button>
         </form>
