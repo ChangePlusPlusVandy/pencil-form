@@ -12,30 +12,20 @@ import { useAuth } from '../AuthContext';
 const Submitted = () => {
   const { clearTeacher, teacher } = useAuth();
 
-  return (
-    <div className="submitted">
-      {teacher && (
-        <p id="thanks">
-          Thank you for shopping with PENCIL, {teacher.firstName}!
-        </p>
-      )}
-      <br />
-      <div className="secondLine" />
-      <div className="pencilIcon" />
-      <div className="firstLine" />
-      <button
-        type="button"
-        className="backHome"
-        onClick={() => {
-          clearTeacher();
-        }}
-      >
-        <Link className="link" to="/">
-          Back to home
-        </Link>
-      </button>
-    </div>
-  );
+    const { clearTeacher, teacher } = useAuth();
+
+    return (
+      <div className="submitted">
+        {teacher && <p id='thanks'>Thank you for shopping with PENCIL, {teacher.firstName}!</p>}
+        <br />
+        <div className="fullPencil">
+          <div className="secondLine" />
+          <div className="pencilIcon"/>
+          <div className="firstLine" /> 
+        </div>
+        <button className="backHome" variant="contained" onClick={() => {clearTeacher()}}><Link className="link" to="/">Back to home</Link></button>
+      </div>
+    );
 };
 
 export default Submitted;
