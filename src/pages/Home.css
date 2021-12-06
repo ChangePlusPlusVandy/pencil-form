@@ -195,25 +195,3 @@ input[name='teacherid'] {
   height: 100%;
   bottom: zero;
 }
-
-input[name=teacherid] {
-    position: relative;
-    top: .9em;
-    width: 78vw;
-    height: 100%;
-    padding: 20px;
-    background: #F3F3F3;
-    border: .1em solid #DCDCDC;
-    box-sizing: border-box;
-    border-radius: .5em;
-    text-align: left;
-    font-size: 1em;
-    font-family: inherit;
-    outline-color: #71C3E7;
-}
-
-
-#welcomeMessage {
-    position: relative;
-    padding: 1.5em;
-}
