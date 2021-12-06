@@ -21,7 +21,8 @@ const getTeacherByID = async (id) => {
   // } catch(err) {
   //     console.log(err);
   // }
+  console.log(id);
   return dummyTeacherObject;
 };
 
-export { getTeacherByID };
+export default getTeacherByID;

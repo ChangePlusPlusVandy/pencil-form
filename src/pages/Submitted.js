@@ -1,18 +1,16 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './Submitted.css';
-import { useAuth } from "../AuthContext";
-
-import itemsObj from "./Form"
-import Button from '@mui/material/Button';
+import { useAuth } from '../AuthContext';
 
 /**
  * Page that verifies success of form submission.
- * 
+ *
  * @returns {Object} - Page containing success page.
  * */
 const Submitted = () => {
+  const { clearTeacher, teacher } = useAuth();
 
     const { clearTeacher, teacher } = useAuth();
 
