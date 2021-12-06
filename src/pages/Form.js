@@ -16,18 +16,19 @@ import { useAuth } from '../AuthContext';
 
 function goodbye(e) {
   //  Alerts the user if they try to leave the page.
-  if(!e) e = window.event;
-  e.cancelBubble = true;
-  e.returnValue = 'You sure you want to leave?'; //This is displayed on the dialog
+  // FIXME: probably need to rename -- don't know what e signifies
+  const event = e || window.event;
+  event.cancelBubble = true;
+  event.returnValue = 'You sure you want to leave?'; // This is displayed on the dialog
 
-  //e.stopPropagation works in Firefox.
-  if (e.stopPropagation) {
-      e.stopPropagation();
-      e.preventDefault();
+  // e.stopPropagation works in Firefox.
+  if (event.stopPropagation) {
+    event.stopPropagation();
+    event.preventDefault();
   }
 }
 
-window.onbeforeunload=goodbye; 
+window.onbeforeunload = goodbye;
 
 const ItemCard = (props) => {
   const [numItems, setNumItems] = useState(0);
@@ -42,12 +43,14 @@ const ItemCard = (props) => {
   }
 
   useEffect(() => {
-    if (numItems > props.itemLimit) {
-      document.getElementById(`limit${props.id}`).style.color = "#F04747";
-      document.getElementById(`${props.id}${props.itemName}`).style.border = "4px solid #F04747";
+    if (numItems > itemLimit) {
+      document.getElementById(`limit${id}`).style.color = '#F04747';
+      document.getElementById(`${id}${itemName}`).style.border =
+        '4px solid #F04747';
     } else {
-      document.getElementById(`limit${props.id}`).style.color = "#555555";
-      document.getElementById(`${props.id}${props.itemName}`).style.border = "4px solid #DCDCDC";
+      document.getElementById(`limit${id}`).style.color = '#555555';
+      document.getElementById(`${id}${itemName}`).style.border =
+        '4px solid #DCDCDC';
     }
   }, [numItems, id, itemLimit]);
 
@@ -60,8 +63,7 @@ const ItemCard = (props) => {
       </text>
       <div className="itemCountContainer">
         {numItems <= 0 ? (
-          <button id="disabled" className="roundButton" disabled={true}>
-
+          <button type="button" id="disabled" className="roundButton" disabled>
             <FaMinus size={100} />
           </button>
         ) : (
@@ -110,15 +112,15 @@ const Form = () => {
   const { teacher } = useAuth();
   const itemsObj = {};
   const submitAll = () => {
-    for (let index = 0; index < sampleArr.length; index++) {
-      var itemName = `${index}${sampleArr[index].itemName}`;
-      var itemValue = document.getElementById(itemName).value;
+    for (let index = 0; index < sampleArr.length; index += 1) {
+      const itemName = `${index}${sampleArr[index].itemName}`;
+      const itemValue = document.getElementById(itemName).value;
       itemsObj[`${sampleArr[index].itemName}`] = itemValue;
     }
-    let completeObj = {
+    const completeObj = {
       items: itemsObj,
       teacherId: teacher.teacherId,
-      schoolId: teacher.schoolId
+      schoolId: teacher.schoolId,
     };
     console.log(completeObj);
   };
@@ -129,17 +131,15 @@ const Form = () => {
         {teacher && <h1>Hello, {teacher.firstName}!</h1>}
       </div>
       <div className="formContainer">
-        {sampleArr.map(function (item, index) {
-          return (
-            <ItemCard
-              id={index}
-              itemName={item.itemName}
-              itemLimit={item.itemLimit}
-            />
-          );
-        })}
-        <Link class='submitLink' to="/submitted">
-          <button id="submit" onClick={submitAll}>
+        {sampleArr.map((item, index) => (
+          <ItemCard
+            id={index}
+            itemName={item.itemName}
+            itemLimit={item.itemLimit}
+          />
+        ))}
+        <Link class="submitLink" to="/submitted">
+          <button type="button" id="submit" onClick={submitAll}>
             Submit
           </button>
         </Link>
