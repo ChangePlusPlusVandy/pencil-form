@@ -18,6 +18,9 @@
 }
 
 #background1 {
+  max-width: 100%;
+  height: auto;
+  width: auto;
   background: url(../assets/welcome-background-1.svg) no-repeat;
   background-size: 15em;
   background-position-x: 100%;
@@ -32,6 +35,9 @@
 }
 
 #background2 {
+  max-width: 100%;
+  height: auto;
+  width: auto;
   background: url(../assets/welcome-background-2.svg) no-repeat;
   background-size: 8em;
   background-position-y: 5.5em;
@@ -42,7 +48,7 @@
   top: 0%;
   margin: 0 0;
   right: 0%;
-  width: 32%;
+  width: 38%;
 }
 
 #line1 {
