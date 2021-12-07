@@ -16,15 +16,15 @@ import { useAuth } from '../AuthContext';
 
 function goodbye(e) {
   //  Alerts the user if they try to leave the page.
-  // eslint-disable-next-line no-param-reassign
-  if (!e) e = window.event;
-  e.cancelBubble = true;
-  e.returnValue = 'You sure you want to leave?'; // This is displayed on the dialog
+  // FIXME: probably need to rename -- don't know what e signifies
+  const event = e || window.event;
+  event.cancelBubble = true;
+  event.returnValue = 'You sure you want to leave?'; // This is displayed on the dialog
 
   // e.stopPropagation works in Firefox.
-  if (e.stopPropagation) {
-    e.stopPropagation();
-    e.preventDefault();
+  if (event.stopPropagation) {
+    event.stopPropagation();
+    event.preventDefault();
   }
 }
 
@@ -117,7 +117,6 @@ const Form = () => {
       const itemValue = document.getElementById(itemName).value;
       itemsObj[`${sampleArr[index].itemName}`] = itemValue;
     }
-
     const completeObj = {
       items: itemsObj,
       teacherId: teacher.teacherId,

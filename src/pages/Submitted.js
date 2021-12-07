@@ -20,12 +20,15 @@ const Submitted = () => {
         </p>
       )}
       <br />
-      <div className="secondLine" />
-      <div className="pencilIcon" />
-      <div className="firstLine" />
+      <div className="fullPencil">
+        <div className="secondLine" />
+        <div className="pencilIcon" />
+        <div className="firstLine" />
+      </div>
       <button
         type="button"
         className="backHome"
+        variant="contained"
         onClick={() => {
           clearTeacher();
         }}

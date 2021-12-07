@@ -5,6 +5,8 @@ import './Home.css';
 
 import { useAuth } from '../AuthContext';
 import getTeacherByID from './api-form';
+// import { ReactComponent as PencilIcon } from '../assets/pencil-icon-2.svg';
+import PencilIcon from '../assets/pencil-icon-2.svg';
 
 /**
  * Home page for pencil form.
@@ -45,9 +47,14 @@ const Home = () => {
 
   return (
     <div className="centered">
+      <div id="background1" />
+      <div id="background2" />
+      <div id="line1" />
+      <div id="line2" />
       <div id="welcomeMessage">
-        <h2>Welcome to</h2>
-        <h1>PENCIL</h1>
+        <img src={PencilIcon} id="pencil-icon" alt="Aidan silly dumbo" />
+        <h2 id="welcome">Welcome to</h2>
+        <h1 id="pencil">PENCIL</h1>
       </div>
       <br />
       <div className="idFormBox">
@@ -62,8 +69,8 @@ const Home = () => {
             onChange={(event) => setTeacherID(event.target.value)}
           />
           <br />
-          <button id="submitButton" variant="contained" type="submit">
-            Go to form
+          <button id="submitButton" type="submit">
+            Submit
           </button>
         </form>
       </div>
