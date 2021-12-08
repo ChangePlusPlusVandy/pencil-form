@@ -5,7 +5,11 @@ import './Form.css';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import { useAuth } from '../AuthContext';
+<<<<<<< HEAD
 import PencilIcon from '../assets/pencil-icon-2.svg';
+=======
+import { getShopForm } from './api-form';
+>>>>>>> 187a76aa2cc234f487240d175aacc68d640c86f9
 
 // icons from react-icons
 
@@ -113,19 +117,31 @@ const Form = () => {
   const { teacher } = useAuth();
   const location = 'Antioch'; // Hardcoded
   const itemsObj = {};
+  const [items, setItems] = useState([]);
   const submitAll = () => {
-    for (let index = 0; index < sampleArr.length; index += 1) {
-      const itemName = `${index}${sampleArr[index].itemName}`;
-      const itemValue = document.getElementById(itemName).value;
-      itemsObj[`${sampleArr[index].itemName}`] = itemValue;
-    }
-    const completeObj = {
-      items: itemsObj,
-      teacherId: teacher.teacherId,
-      schoolId: teacher.schoolId,
-    };
-    console.log(completeObj);
+    // for (let index = 0; index < sampleArr.length; index += 1) {
+    //   const itemName = `${index}${sampleArr[index].itemName}`;
+    //   const itemValue = document.getElementById(itemName).value;
+    //   itemsObj[`${sampleArr[index].itemName}`] = itemValue;
+    // }
+    // const completeObj = {
+    //   items: itemsObj,
+    //   teacherId: teacher.teacherId,
+    //   schoolId: teacher.schoolId,
+    // };
+    // console.log(completeObj);
   };
+
+  useEffect(() => {
+    getShopForm().then((result) => {
+      console.log(result);
+      if (result.error) {
+        console.log(result.error);
+      } else {
+        setItems(result);
+      }
+    });
+  }, []);
 
   return (
     <div className="pageContainer">
@@ -137,11 +153,11 @@ const Form = () => {
         {location && <h2 id="location-label">PENCIL - {location}</h2>}
       </div>
       <div className="formContainer">
-        {sampleArr.map((item, index) => (
+        {items.map((item, index) => (
           <ItemCard
             id={index}
             itemName={item.itemName}
-            itemLimit={item.itemLimit}
+            itemLimit={item.maxLimit}
           />
         ))}
         <Link class="submitLink" to="/submitted">
