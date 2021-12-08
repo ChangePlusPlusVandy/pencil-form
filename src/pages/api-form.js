@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 const dummyTeacherObject = {
   teacherId: 666,
   firstName: 'John',
@@ -25,4 +26,13 @@ const getTeacherByID = async (id) => {
   return dummyTeacherObject;
 };
 
-export default getTeacherByID;
+const getShopForm = async () => {
+  try {
+    const response = await fetch('http://localhost:8080/api/form/getShopForm');
+    return await response.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { getTeacherByID, getShopForm };

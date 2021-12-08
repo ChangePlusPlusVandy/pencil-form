@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import './Home.css';
 
 import { useAuth } from '../AuthContext';
-import getTeacherByID from './api-form';
+import { getTeacherByID } from './api-form';
 // import { ReactComponent as PencilIcon } from '../assets/pencil-icon-2.svg';
 import PencilIcon from '../assets/pencil-icon-2.svg';
 
