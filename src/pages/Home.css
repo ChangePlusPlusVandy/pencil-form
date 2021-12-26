@@ -79,6 +79,13 @@
   top: 4.5em;
 }
 
+/* iphone x */
+@media (min-height: 1900px) {
+  #line2 {
+    top: 6.6em !important;
+  }
+}
+
 h1 {
   margin: 2px;
 }

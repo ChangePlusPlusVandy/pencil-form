@@ -5,7 +5,11 @@ import './Form.css';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import { useAuth } from '../AuthContext';
+<<<<<<< HEAD
+import PencilIcon from '../assets/pencil-icon-2.svg';
+=======
 import { getShopForm } from './api-form';
+>>>>>>> 187a76aa2cc234f487240d175aacc68d640c86f9
 
 // icons from react-icons
 
@@ -111,6 +115,7 @@ const sampleArr = [sampleJson, sampleJson, sampleJson, sampleJson, sampleJson];
 
 const Form = () => {
   const { teacher } = useAuth();
+  const location = 'Antioch'; // Hardcoded
   const itemsObj = {};
   const [items, setItems] = useState([]);
   const submitAll = () => {
@@ -141,7 +146,11 @@ const Form = () => {
   return (
     <div className="pageContainer">
       <div className="header">
-        {teacher && <h1>Hello, {teacher.firstName}!</h1>}
+        {/* eslint-disable-next-line */}
+        <img src={PencilIcon} id="form-pencil-icon" alt="a cartoon pencil" />                     
+        {/* eslint-disable-next-line */}
+        {teacher && <h1 id="form-greeting">Welcome, {teacher.firstName}!</h1>}
+        {location && <h2 id="location-label">PENCIL - {location}</h2>}
       </div>
       <div className="formContainer">
         {items.map((item, index) => (

@@ -52,7 +52,7 @@ const Home = () => {
       <div id="line1" />
       <div id="line2" />
       <div id="welcomeMessage">
-        <img src={PencilIcon} id="pencil-icon" alt="Aidan silly dumbo" />
+        <img src={PencilIcon} id="pencil-icon" alt="A cartoon pencil" />
         <h2 id="welcome">Welcome to</h2>
         <h1 id="pencil">PENCIL</h1>
       </div>
