@@ -16,14 +16,15 @@ const dummyTeacherObject = {
  * @returns {Object} - Teacher information if request is successful, error otherwise.
  * */
 const getTeacherByID = async (id) => {
-  // try{
-  //     const response = await fetch(`http://localhost:8080/api/form/${id}`);
-  //     return await response.json();
-  // } catch(err) {
-  //     console.log(err);
-  // }
-  console.log(id);
-  return dummyTeacherObject;
+  try {
+    const response = await fetch(
+      `http://localhost:8080/api/form/teacher/${id}`
+    );
+    return await response.json();
+  } catch (err) {
+    console.log(err);
+    return { error: 'Teacher Not Found' };
+  }
 };
 
 const getShopForm = async () => {

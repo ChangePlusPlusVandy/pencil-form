@@ -28,13 +28,13 @@ const Home = () => {
    * @param {Object} event - Event object.
    * */
   const handleSubmit = (event) => {
+    event.preventDefault();
     if (teacherID === '') {
-      event.preventDefault();
       alert('Please enter your PENCIL ID.');
       return;
     }
-    event.preventDefault();
     getTeacherByID(teacherID).then((data) => {
+      console.log(data);
       if (data.error) setError(data.error);
       else {
         // history.push(`/form/${teacherID}`);
@@ -69,12 +69,12 @@ const Home = () => {
             onChange={(event) => setTeacherID(event.target.value)}
           />
           <br />
+          {error && <p className="errorMessage">{error}</p>}
           <button id="submitButton" type="submit">
             Submit
           </button>
         </form>
       </div>
-      {error && <p>{error}</p>}
     </div>
   );
 };

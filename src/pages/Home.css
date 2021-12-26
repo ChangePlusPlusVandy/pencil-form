@@ -201,3 +201,12 @@ input[name='teacherid'] {
   height: 100%;
   bottom: zero;
 }
+
+.errorMessage {
+  position: relative;
+  background-color: rgb(255, 154, 154);
+  bottom: -300px;
+  border-radius: 30px;
+  color: rgb(95, 3, 3);
+  padding: 20px;
+}
