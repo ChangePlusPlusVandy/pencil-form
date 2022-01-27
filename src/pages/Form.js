@@ -6,7 +6,7 @@ import { FaPlus, FaMinus } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import { useAuth } from '../AuthContext';
 import PencilIcon from '../assets/pencil-icon-2.svg';
-import { getShopForm } from './api-form';
+import { getShopForm, submitForm } from './api-form';
 
 // icons from react-icons
 
@@ -32,16 +32,35 @@ function goodbye(e) {
 
 window.onbeforeunload = goodbye;
 
-const ItemCard = (props) => {
+const ItemCard = ({
+  itemLimit,
+  id,
+  itemId,
+  itemName,
+  setItems,
+  item,
+  items,
+  itemCount,
+}) => {
   const [numItems, setNumItems] = useState(0);
-  const { itemLimit, id, itemName } = props;
 
   function increment() {
+    console.log(items);
+    setItems((prevItems) =>
+      prevItems.map((el) =>
+        el.itemId === itemId ? { ...el, itemCount: el.itemCount + 1 } : el
+      )
+    );
     setNumItems((currNumItems) => currNumItems + 1);
   }
 
   function decrement() {
-    setNumItems((currNumItems) => currNumItems - 1);
+    console.log(item);
+    setItems((prevItems) =>
+      prevItems.map((el) =>
+        el.itemId === itemId ? { ...el, itemCount: el.itemCount - 1 } : el
+      )
+    );
   }
 
   useEffect(() => {
@@ -84,9 +103,15 @@ const ItemCard = (props) => {
           type="number"
           name={itemName}
           id={`${id}${itemName}`}
-          value={numItems}
+          value={itemCount}
           onChange={(e) => {
-            setNumItems(e.target.value);
+            setItems((prevItems) =>
+              prevItems.map((el) =>
+                el.itemId === itemId
+                  ? { ...el, itemCount: parseInt(e.target.value, 10) }
+                  : el
+              )
+            );
           }}
         />
         <button
@@ -113,20 +138,16 @@ const sampleArr = [sampleJson, sampleJson, sampleJson, sampleJson, sampleJson];
 const Form = () => {
   const { teacher } = useAuth();
   const location = 'Antioch'; // Hardcoded
-  const itemsObj = {};
   const [items, setItems] = useState([]);
   const submitAll = () => {
-    // for (let index = 0; index < sampleArr.length; index += 1) {
-    //   const itemName = `${index}${sampleArr[index].itemName}`;
-    //   const itemValue = document.getElementById(itemName).value;
-    //   itemsObj[`${sampleArr[index].itemName}`] = itemValue;
-    // }
-    // const completeObj = {
-    //   items: itemsObj,
-    //   teacherId: teacher.teacherId,
-    //   schoolId: teacher.schoolId,
-    // };
-    // console.log(completeObj);
+    const completeObj = {
+      teacherId: teacher.teacherkey,
+      schoolId: 40, // TODO: Use real school id
+      items,
+    };
+
+    submitForm(completeObj);
+    console.log(completeObj);
   };
 
   useEffect(() => {
@@ -153,8 +174,13 @@ const Form = () => {
         {items.map((item, index) => (
           <ItemCard
             id={index}
+            itemId={item.itemId}
             itemName={item.itemName}
             itemLimit={item.maxLimit}
+            setItems={setItems}
+            item={item}
+            items={items}
+            itemCount={item.itemCount}
           />
         ))}
         <Link class="submitLink" to="/submitted">
@@ -173,10 +199,22 @@ ItemCard.propTypes = {
   id: PropTypes.number,
   itemName: PropTypes.string,
   itemLimit: PropTypes.number,
+  setItems: PropTypes.func,
+  itemCount: PropTypes.number,
+  // eslint-disable-next-line react/forbid-prop-types
+  item: PropTypes.object,
+  // eslint-disable-next-line react/forbid-prop-types
+  items: PropTypes.array,
+  itemId: PropTypes.number,
 };
 
 ItemCard.defaultProps = {
   id: -1,
   itemName: 'None',
   itemLimit: 0,
+  setItems: () => {},
+  item: {},
+  items: [],
+  itemId: -1,
+  itemCount: 0,
 };

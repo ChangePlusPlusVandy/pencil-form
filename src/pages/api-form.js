@@ -30,10 +30,34 @@ const getTeacherByID = async (id) => {
 const getShopForm = async () => {
   try {
     const response = await fetch('http://localhost:8080/api/form/getShopForm');
+    const responseJson = await response.json();
+    responseJson.forEach((element) => {
+      // eslint-disable-next-line no-param-reassign
+      element.itemCount = 0;
+    });
+    console.log(responseJson);
+    return responseJson;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const submitForm = async (items) => {
+  try {
+    const response = await fetch(
+      'http://localhost:8080/api/form/transaction/submit',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(items),
+      }
+    );
     return await response.json();
   } catch (err) {
     console.log(err);
   }
 };
 
-export { getTeacherByID, getShopForm };
+export { getTeacherByID, getShopForm, submitForm };
