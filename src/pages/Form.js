@@ -147,7 +147,6 @@ const Form = () => {
     };
 
     submitForm(completeObj);
-    console.log(completeObj);
   };
 
   useEffect(() => {
@@ -183,7 +182,7 @@ const Form = () => {
             itemCount={item.itemCount}
           />
         ))}
-        <Link class="submitLink" to="/submitted">
+        <Link className="submitLink" to="/submitted">
           <button type="button" id="submit" onClick={submitAll}>
             Submit
           </button>
