@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Bitter&family=Roboto&display=swap');
 
 .pageContainer {
   font-family: 'Bitter', serif;
@@ -30,7 +29,7 @@
 }
 
 #location-label {
-  font-family: Roboto;
+  font-family: 'Roboto';
   font-size: 0.88em;
   transform: translateY(99%) translateX(-11%);
   opacity: 60%;
