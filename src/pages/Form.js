@@ -63,6 +63,15 @@ const ItemCard = ({
     );
   }
 
+  function getMaxItems() {
+    console.log(item);
+    setItems((prevItems) =>
+      prevItems.map((el) =>
+        el.itemId === itemId ? { ...el, itemCount: itemLimit } : el
+      )
+    );
+  }
+
   useEffect(() => {
     if (numItems > itemLimit) {
       document.getElementById(`limit${id}`).style.color = '#F04747';
@@ -82,6 +91,22 @@ const ItemCard = ({
       <text className="itemLimit" id={`limit${id}`}>
         Limit: {itemLimit}
       </text>
+      <div className="max">
+        {numItems === itemLimit ? (
+          <button type="button" id="notMax" className="maxButton" disabled>
+            Max
+          </button>
+        ) : (
+          <button
+            type="button"
+            id="getMax"
+            className="maxButton"
+            onClick={getMaxItems}
+          >
+            Max
+          </button>
+        )}
+      </div>
       <div className="itemCountContainer">
         {numItems <= 0 ? (
           <button type="button" id="disabled" className="roundButton" disabled>
