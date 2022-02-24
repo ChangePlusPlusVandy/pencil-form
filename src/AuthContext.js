@@ -19,6 +19,7 @@ export function useAuth() {
  * */
 export const AuthProvider = ({ children }) => {
   const [teacher, setTeacher] = useState();
+  const [location, setLocation] = useState();
 
   /**
    * Populates teacher information in state.
@@ -33,14 +34,32 @@ export const AuthProvider = ({ children }) => {
     setTeacher(null);
   }
 
+  function populateLocation(loc) {
+    setLocation(loc);
+  }
+
+  function clearLocation() {
+    setLocation(null);
+  }
+
   // State and helpers to export
   const value = useMemo(
     () => ({
       teacher,
       populateTeacher,
       clearTeacher,
+      location,
+      populateLocation,
+      clearLocation,
     }),
-    [teacher, populateTeacher, clearTeacher]
+    [
+      teacher,
+      populateTeacher,
+      clearTeacher,
+      location,
+      populateLocation,
+      clearLocation,
+    ]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

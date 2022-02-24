@@ -15,11 +15,12 @@ import PencilIcon from '../assets/pencil-icon-2.svg';
  * */
 
 const Home = () => {
-  const { populateTeacher } = useAuth();
+  const { populateTeacher, populateLocation } = useAuth();
 
   const history = useHistory();
 
   const [teacherID, setTeacherID] = useState(''); // ID of teacher editable by form
+  const [location, setLocation] = useState(''); // Location of teacher editable by form
   const [error, setError] = useState('');
 
   /**
@@ -29,8 +30,9 @@ const Home = () => {
    * */
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (teacherID === '') {
-      alert('Please enter your PENCIL ID.');
+    if (teacherID === '' || location === '') {
+      // eslint-disable-next-line no-alert
+      alert('Please fill out all fields.');
       return;
     }
     getTeacherByID(teacherID).then((data) => {
@@ -40,6 +42,7 @@ const Home = () => {
         // history.push(`/form/${teacherID}`);
         setError('');
         populateTeacher(data);
+        populateLocation(location);
         history.push(`/form`);
       }
     });
@@ -59,14 +62,25 @@ const Home = () => {
       <br />
       <div className="idFormBox">
         <form onSubmit={handleSubmit} id="idForm">
-          <p id="label">Please enter your PENCIL ID to get started.</p>
+          <p id="label">
+            Please enter your PENCIL ID and location to get started.
+          </p>
           <br />
           <input
             variant="outlined"
             name="teacherid"
             placeholder="PENCIL ID"
             value={teacherID}
+            autoComplete="off"
             onChange={(event) => setTeacherID(event.target.value)}
+          />
+          <input
+            variant="outlined"
+            name="location"
+            placeholder="LOCATION"
+            value={location}
+            autoComplete="off"
+            onChange={(event) => setLocation(event.target.value)}
           />
           <br />
           {error && <p className="errorMessage">{error}</p>}

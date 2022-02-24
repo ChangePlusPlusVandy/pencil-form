@@ -17,9 +17,8 @@ const dummyTeacherObject = {
  * */
 const getTeacherByID = async (id) => {
   try {
-    const response = await fetch(
-      `http://localhost:8080/api/form/teacher/${id}`
-    );
+    console.log(id);
+    const response = await fetch(`http://localhost:8080/api/teacher/${id}`);
     return await response.json();
   } catch (err) {
     console.log(err);
@@ -27,9 +26,11 @@ const getTeacherByID = async (id) => {
   }
 };
 
-const getShopForm = async () => {
+const getShopForm = async (location) => {
   try {
-    const response = await fetch('http://localhost:8080/api/form/getShopForm');
+    const response = await fetch(
+      `http://localhost:8080/api/${location}/form/getShopForm`
+    );
     const responseJson = await response.json();
     responseJson.forEach((element) => {
       // eslint-disable-next-line no-param-reassign
@@ -42,10 +43,23 @@ const getShopForm = async () => {
   }
 };
 
-const submitForm = async (items) => {
+const submitForm = async (location, items) => {
   try {
+    console.log(items);
+    // eslint-disable-next-line prefer-const
+    let result = {};
+    console.log(items, 'here');
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < items.items.length; i++) {
+      result[items.items[i].itemName] = items.items[i].itemCount;
+      console.log(items.items[i], 'here');
+    }
+    console.log(result);
+    // eslint-disable-next-line no-param-reassign
+    items.items = result;
+    console.log(items.items);
     const response = await fetch(
-      'http://localhost:8080/api/form/transaction/submit',
+      `http://localhost:8080/api/${location}/transaction/submit`,
       {
         method: 'POST',
         headers: {

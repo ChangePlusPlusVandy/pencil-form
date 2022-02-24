@@ -136,21 +136,20 @@ const sampleJson = {
 const sampleArr = [sampleJson, sampleJson, sampleJson, sampleJson, sampleJson];
 
 const Form = () => {
-  const { teacher } = useAuth();
-  const location = 'Antioch'; // Hardcoded
+  const { teacher, location } = useAuth();
   const [items, setItems] = useState([]);
   const submitAll = () => {
     const completeObj = {
-      teacherId: teacher.teacherkey,
+      teacherId: teacher.teacherId,
       schoolId: 40, // TODO: Use real school id
       items,
     };
 
-    submitForm(completeObj);
+    submitForm(location, completeObj);
   };
 
   useEffect(() => {
-    getShopForm().then((result) => {
+    getShopForm(location).then((result) => {
       console.log(result);
       if (result.error) {
         console.log(result.error);
