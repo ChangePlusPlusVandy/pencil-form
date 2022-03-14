@@ -51,7 +51,7 @@ const submitForm = async (location, items) => {
     for (let i = 0; i < items.items.length; i++) {
       result[items.items[i]['Item.itemName']] = items.items[i].itemCount;
     }
-    console.log(result);
+    console.log(items);
     // eslint-disable-next-line no-param-reassign
     // items.items = result;
     console.log(items.items);

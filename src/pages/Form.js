@@ -140,8 +140,8 @@ const Form = () => {
   const [items, setItems] = useState([]);
   const submitAll = () => {
     const completeObj = {
-      teacherId: teacher.teacherId,
-      locationId: location.locationId,
+      teacherId: teacher.pencilId,
+      locationId: location,
       schoolId: 40, // TODO: Use real school id
       items,
     };
