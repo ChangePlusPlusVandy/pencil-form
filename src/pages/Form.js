@@ -140,7 +140,8 @@ const Form = () => {
   const [items, setItems] = useState([]);
   const submitAll = () => {
     const completeObj = {
-      teacherId: teacher.teacherId,
+      teacherId: teacher.pencilId,
+      locationId: location,
       schoolId: 40, // TODO: Use real school id
       items,
     };
@@ -173,7 +174,7 @@ const Form = () => {
           <ItemCard
             id={index}
             itemId={item.itemId}
-            itemName={item.itemName}
+            itemName={item['Item.itemName']}
             itemLimit={item.maxLimit}
             setItems={setItems}
             item={item}
