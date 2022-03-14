@@ -35,7 +35,7 @@ window.onbeforeunload = goodbye;
 const ItemCard = ({
   itemLimit,
   id,
-  itemId,
+  uuid,
   itemName,
   setItems,
   item,
@@ -48,7 +48,7 @@ const ItemCard = ({
     console.log(items);
     setItems((prevItems) =>
       prevItems.map((el) =>
-        el.itemId === itemId ? { ...el, itemCount: el.itemCount + 1 } : el
+        el.uuid === uuid ? { ...el, itemCount: el.itemCount + 1 } : el
       )
     );
     setNumItems((currNumItems) => currNumItems + 1);
@@ -58,7 +58,7 @@ const ItemCard = ({
     console.log(item);
     setItems((prevItems) =>
       prevItems.map((el) =>
-        el.itemId === itemId ? { ...el, itemCount: el.itemCount - 1 } : el
+        el.uuid === uuid ? { ...el, itemCount: el.itemCount - 1 } : el
       )
     );
   }
@@ -107,7 +107,7 @@ const ItemCard = ({
           onChange={(e) => {
             setItems((prevItems) =>
               prevItems.map((el) =>
-                el.itemId === itemId
+                el.uuid === uuid
                   ? { ...el, itemCount: parseInt(e.target.value, 10) }
                   : el
               )
@@ -142,7 +142,7 @@ const Form = () => {
     const completeObj = {
       teacherId: teacher.pencilId,
       locationId: location,
-      schoolId: 40, // TODO: Use real school id
+      schoolId: teacher.School.uuid || 2, // TODO: Use real school id
       items,
     };
 
@@ -173,7 +173,7 @@ const Form = () => {
         {items.map((item, index) => (
           <ItemCard
             id={index}
-            itemId={item.itemId}
+            uuid={item.uuid}
             itemName={item['Item.itemName']}
             itemLimit={item.maxLimit}
             setItems={setItems}
@@ -204,7 +204,7 @@ ItemCard.propTypes = {
   item: PropTypes.object,
   // eslint-disable-next-line react/forbid-prop-types
   items: PropTypes.array,
-  itemId: PropTypes.number,
+  uuid: PropTypes.string,
 };
 
 ItemCard.defaultProps = {
@@ -214,6 +214,6 @@ ItemCard.defaultProps = {
   setItems: () => {},
   item: {},
   items: [],
-  itemId: -1,
+  uuid: '',
   itemCount: 0,
 };
