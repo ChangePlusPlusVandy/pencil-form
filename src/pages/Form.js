@@ -141,6 +141,7 @@ const Form = () => {
   const submitAll = () => {
     const completeObj = {
       teacherId: teacher.teacherId,
+      locationId: location.locationId,
       schoolId: 40, // TODO: Use real school id
       items,
     };
@@ -173,7 +174,7 @@ const Form = () => {
           <ItemCard
             id={index}
             itemId={item.itemId}
-            itemName={item.itemName}
+            itemName={item['Item.itemName']}
             itemLimit={item.maxLimit}
             setItems={setItems}
             item={item}

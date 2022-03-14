@@ -45,18 +45,15 @@ const getShopForm = async (location) => {
 
 const submitForm = async (location, items) => {
   try {
-    console.log(items);
     // eslint-disable-next-line prefer-const
     let result = {};
-    console.log(items, 'here');
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < items.items.length; i++) {
-      result[items.items[i].itemName] = items.items[i].itemCount;
-      console.log(items.items[i], 'here');
+      result[items.items[i]['Item.itemName']] = items.items[i].itemCount;
     }
     console.log(result);
     // eslint-disable-next-line no-param-reassign
-    items.items = result;
+    // items.items = result;
     console.log(items.items);
     const response = await fetch(
       `http://localhost:8080/api/${location}/transaction/submit`,
