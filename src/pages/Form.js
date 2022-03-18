@@ -32,20 +32,10 @@ function goodbye(e) {
 
 window.onbeforeunload = goodbye;
 
-const ItemCard = ({
-  itemLimit,
-  id,
-  uuid,
-  itemName,
-  setItems,
-  item,
-  items,
-  itemCount,
-}) => {
+const ItemCard = ({ itemLimit, id, uuid, itemName, setItems, itemCount }) => {
   const [numItems, setNumItems] = useState(0);
 
   function increment() {
-    console.log(items);
     setItems((prevItems) =>
       prevItems.map((el) =>
         el.uuid === uuid ? { ...el, itemCount: el.itemCount + 1 } : el
@@ -55,7 +45,6 @@ const ItemCard = ({
   }
 
   function decrement() {
-    console.log(item);
     setItems((prevItems) =>
       prevItems.map((el) =>
         el.uuid === uuid ? { ...el, itemCount: el.itemCount - 1 } : el
@@ -128,13 +117,6 @@ const ItemCard = ({
   );
 };
 
-const sampleJson = {
-  itemName: 'Pencils',
-  itemLimit: 10,
-};
-
-const sampleArr = [sampleJson, sampleJson, sampleJson, sampleJson, sampleJson];
-
 const Form = () => {
   const { teacher, location } = useAuth();
   const [items, setItems] = useState([]);
@@ -151,7 +133,6 @@ const Form = () => {
 
   useEffect(() => {
     getShopForm(location).then((result) => {
-      console.log(result);
       if (result.error) {
         console.log(result.error);
       } else {
@@ -177,13 +158,11 @@ const Form = () => {
             itemName={item['Item.itemName']}
             itemLimit={item.maxLimit}
             setItems={setItems}
-            item={item}
-            items={items}
             itemCount={item.itemCount}
           />
         ))}
         <Link className="submitLink" to="/submitted">
-          <button type="button" id="submit" onClick={submitAll}>
+          <button type="submit" id="submit" onClick={submitAll}>
             Submit
           </button>
         </Link>
@@ -200,10 +179,6 @@ ItemCard.propTypes = {
   itemLimit: PropTypes.number,
   setItems: PropTypes.func,
   itemCount: PropTypes.number,
-  // eslint-disable-next-line react/forbid-prop-types
-  item: PropTypes.object,
-  // eslint-disable-next-line react/forbid-prop-types
-  items: PropTypes.array,
   uuid: PropTypes.string,
 };
 
@@ -212,8 +187,6 @@ ItemCard.defaultProps = {
   itemName: 'None',
   itemLimit: 0,
   setItems: () => {},
-  item: {},
-  items: [],
   uuid: '',
   itemCount: 0,
 };

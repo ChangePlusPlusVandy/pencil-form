@@ -1,13 +1,5 @@
 /* eslint-disable consistent-return */
-const dummyTeacherObject = {
-  teacherId: 666,
-  firstName: 'John',
-  lastName: 'Doe',
-  email: 'john.doe@vanderbilt.edu',
-  schoolId: 'fgh136Dbest',
-};
-
-// test
+/* eslint-disable no-param-reassign */
 
 /**
  * Makes GET request to API to get teacher information.
@@ -17,7 +9,6 @@ const dummyTeacherObject = {
  * */
 const getTeacherByID = async (id) => {
   try {
-    console.log(id);
     const response = await fetch(`http://localhost:8080/api/teacher/${id}`);
     return await response.json();
   } catch (err) {
@@ -33,10 +24,8 @@ const getShopForm = async (location) => {
     );
     const responseJson = await response.json();
     responseJson.forEach((element) => {
-      // eslint-disable-next-line no-param-reassign
       element.itemCount = 0;
     });
-    console.log(responseJson);
     return responseJson;
   } catch (err) {
     console.log(err);
@@ -45,16 +34,9 @@ const getShopForm = async (location) => {
 
 const submitForm = async (location, items) => {
   try {
-    // eslint-disable-next-line prefer-const
-    let result = {};
-    // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < items.items.length; i++) {
-      result[items.items[i]['Item.itemName']] = items.items[i].itemCount;
-    }
-    console.log(items);
-    // eslint-disable-next-line no-param-reassign
-    // items.items = result;
-    console.log(items.items);
+    // remove items which weren't taken
+    items.items = items.items.filter((item) => item.itemCount > 0);
+
     const response = await fetch(
       `http://localhost:8080/api/${location}/transaction/submit`,
       {
