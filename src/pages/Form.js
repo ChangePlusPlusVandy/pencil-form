@@ -8,8 +8,6 @@ import { useAuth } from '../AuthContext';
 import PencilIcon from '../assets/pencil-icon-2.svg';
 import { getShopForm, submitForm } from './api-form';
 
-// icons from react-icons
-
 /**
  * Form page containing form with school items for teacher.
  *
@@ -30,8 +28,6 @@ function goodbye(e) {
   }
 }
 
-window.onbeforeunload = goodbye;
-
 const ItemCard = ({
   itemLimit,
   id,
@@ -45,7 +41,6 @@ const ItemCard = ({
   const [numItems, setNumItems] = useState(0);
 
   function increment() {
-    console.log(items);
     setItems((prevItems) =>
       prevItems.map((el) =>
         el.uuid === uuid ? { ...el, itemCount: el.itemCount + 1 } : el
@@ -55,15 +50,17 @@ const ItemCard = ({
   }
 
   function decrement() {
-    console.log(item);
+    console.log('decrement');
     setItems((prevItems) =>
       prevItems.map((el) =>
         el.uuid === uuid ? { ...el, itemCount: el.itemCount - 1 } : el
       )
     );
+    setNumItems((currNumItems) => currNumItems - 1);
   }
 
   useEffect(() => {
+    console.log(numItems, itemLimit);
     if (numItems > itemLimit) {
       document.getElementById(`limit${id}`).style.color = '#F04747';
       document.getElementById(`${id}${itemName}`).style.border =
@@ -74,6 +71,13 @@ const ItemCard = ({
         '4px solid #DCDCDC';
     }
   }, [numItems, id, itemLimit]);
+
+  useEffect(() => {
+    window.onbeforeunload = goodbye;
+    return () => {
+      window.onbeforeunload = null;
+    };
+  }, []);
 
   return (
     <div className="cardContainer">
@@ -105,13 +109,15 @@ const ItemCard = ({
           id={`${id}${itemName}`}
           value={itemCount}
           onChange={(e) => {
+            console.log(e.target.value);
             setItems((prevItems) =>
               prevItems.map((el) =>
                 el.uuid === uuid
-                  ? { ...el, itemCount: parseInt(e.target.value, 10) }
+                  ? { ...el, itemCount: parseInt(0 || e.target.value, 10) }
                   : el
               )
             );
+            setNumItems((currNumItems) => 0 || e.target.value);
           }}
         />
         <button
@@ -127,13 +133,6 @@ const ItemCard = ({
     </div>
   );
 };
-
-const sampleJson = {
-  itemName: 'Pencils',
-  itemLimit: 10,
-};
-
-const sampleArr = [sampleJson, sampleJson, sampleJson, sampleJson, sampleJson];
 
 const Form = () => {
   const { teacher, location } = useAuth();
@@ -151,9 +150,8 @@ const Form = () => {
 
   useEffect(() => {
     getShopForm(location).then((result) => {
-      console.log(result);
-      if (result.error) {
-        console.log(result.error);
+      if (!result || result.error) {
+        console.log(result ? result.error : 'error');
       } else {
         setItems(result);
       }
@@ -163,9 +161,7 @@ const Form = () => {
   return (
     <div className="pageContainer">
       <div className="header">
-        {/* eslint-disable-next-line */}
         <img src={PencilIcon} id="form-pencil-icon" alt="a cartoon pencil" />
-        {/* eslint-disable-next-line */}
         {teacher && <h1 id="form-greeting">Welcome, {teacher.firstName}!</h1>}
         {location && <h2 id="location-label">PENCIL - {location}</h2>}
       </div>
@@ -200,9 +196,7 @@ ItemCard.propTypes = {
   itemLimit: PropTypes.number,
   setItems: PropTypes.func,
   itemCount: PropTypes.number,
-  // eslint-disable-next-line react/forbid-prop-types
   item: PropTypes.object,
-  // eslint-disable-next-line react/forbid-prop-types
   items: PropTypes.array,
   uuid: PropTypes.string,
 };
