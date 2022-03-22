@@ -52,6 +52,20 @@ const ItemCard = ({ itemLimit, id, uuid, itemName, setItems, itemCount }) => {
     );
   }
 
+  function getMaxItems() {
+    setItems((prevItems) =>
+      prevItems.map((el) =>
+        el.uuid === uuid ? { ...el, itemCount: itemLimit } : el
+      )
+    );
+  }
+
+  function getMinItems() {
+    setItems((prevItems) =>
+      prevItems.map((el) => (el.uuid === uuid ? { ...el, itemCount: 0 } : el))
+    );
+  }
+
   useEffect(() => {
     if (numItems > itemLimit) {
       document.getElementById(`limit${id}`).style.color = '#F04747';
@@ -71,6 +85,38 @@ const ItemCard = ({ itemLimit, id, uuid, itemName, setItems, itemCount }) => {
       <text className="itemLimit" id={`limit${id}`}>
         Limit: {itemLimit}
       </text>
+      <div className="max">
+        {numItems === itemLimit ? (
+          <button type="button" id="notMax" className="maxButton" disabled>
+            Max
+          </button>
+        ) : (
+          <button
+            type="button"
+            id="getMax"
+            className="maxButton"
+            onClick={getMaxItems}
+          >
+            Max
+          </button>
+        )}
+      </div>
+      <div className="min">
+        {numItems === 0 ? (
+          <button type="button" id="notMax" className="minButton" disabled>
+            Min
+          </button>
+        ) : (
+          <button
+            type="button"
+            id="getMax"
+            className="minButton"
+            onClick={getMinItems}
+          >
+            Min
+          </button>
+        )}
+      </div>
       <div className="itemCountContainer">
         {numItems <= 0 ? (
           <button type="button" id="disabled" className="roundButton" disabled>
