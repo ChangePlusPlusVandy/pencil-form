@@ -28,16 +28,7 @@ function goodbye(e) {
   }
 }
 
-const ItemCard = ({
-  itemLimit,
-  id,
-  uuid,
-  itemName,
-  setItems,
-  item,
-  items,
-  itemCount,
-}) => {
+const ItemCard = ({ itemLimit, id, uuid, itemName, setItems, itemCount }) => {
   const [numItems, setNumItems] = useState(0);
 
   function increment() {
@@ -50,13 +41,26 @@ const ItemCard = ({
   }
 
   function decrement() {
-    console.log('decrement');
     setItems((prevItems) =>
       prevItems.map((el) =>
         el.uuid === uuid ? { ...el, itemCount: el.itemCount - 1 } : el
       )
     );
     setNumItems((currNumItems) => currNumItems - 1);
+  }
+
+  function getMaxItems() {
+    setItems((prevItems) =>
+      prevItems.map((el) =>
+        el.uuid === uuid ? { ...el, itemCount: itemLimit } : el
+      )
+    );
+  }
+
+  function getMinItems() {
+    setItems((prevItems) =>
+      prevItems.map((el) => (el.uuid === uuid ? { ...el, itemCount: 0 } : el))
+    );
   }
 
   useEffect(() => {
@@ -86,6 +90,38 @@ const ItemCard = ({
       <text className="itemLimit" id={`limit${id}`}>
         Limit: {itemLimit}
       </text>
+      <div className="max">
+        {numItems === itemLimit ? (
+          <button type="button" id="notMax" className="maxButton" disabled>
+            Max
+          </button>
+        ) : (
+          <button
+            type="button"
+            id="getMax"
+            className="maxButton"
+            onClick={getMaxItems}
+          >
+            Max
+          </button>
+        )}
+      </div>
+      <div className="min">
+        {numItems === 0 ? (
+          <button type="button" id="notMax" className="minButton" disabled>
+            Min
+          </button>
+        ) : (
+          <button
+            type="button"
+            id="getMax"
+            className="minButton"
+            onClick={getMinItems}
+          >
+            Min
+          </button>
+        )}
+      </div>
       <div className="itemCountContainer">
         {numItems <= 0 ? (
           <button type="button" id="disabled" className="roundButton" disabled>
@@ -173,13 +209,11 @@ const Form = () => {
             itemName={item['Item.itemName']}
             itemLimit={item.maxLimit}
             setItems={setItems}
-            item={item}
-            items={items}
             itemCount={item.itemCount}
           />
         ))}
         <Link className="submitLink" to="/submitted">
-          <button type="button" id="submit" onClick={submitAll}>
+          <button type="submit" id="submit" onClick={submitAll}>
             Submit
           </button>
         </Link>
@@ -188,16 +222,12 @@ const Form = () => {
   );
 };
 
-export default Form;
-
 ItemCard.propTypes = {
   id: PropTypes.number,
   itemName: PropTypes.string,
   itemLimit: PropTypes.number,
   setItems: PropTypes.func,
   itemCount: PropTypes.number,
-  item: PropTypes.object,
-  items: PropTypes.array,
   uuid: PropTypes.string,
 };
 
@@ -206,8 +236,8 @@ ItemCard.defaultProps = {
   itemName: 'None',
   itemLimit: 0,
   setItems: () => {},
-  item: {},
-  items: [],
   uuid: '',
   itemCount: 0,
 };
+
+export default Form;
