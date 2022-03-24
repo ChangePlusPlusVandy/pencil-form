@@ -1,43 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
-const ItemCard = ({ itemLimit, id, uuid, itemName, setItems, itemCount }) => {
+const ItemCard = ({ uuid, itemName, itemLimit, handleChange }) => {
   const [numItems, setNumItems] = useState(0);
 
-  function increment() {
-    setItems((prevItems) =>
-      prevItems.map((el) =>
-        el.uuid === uuid ? { ...el, itemCount: el.itemCount + 1 } : el
-      )
-    );
-    setNumItems((currNumItems) => currNumItems + 1);
-  }
+  const handleInputChange = (e) => {
+    const val = parseInt(e.target.value, 10);
+    setNumItems(val);
+  };
 
-  function decrement() {
-    setItems((prevItems) =>
-      prevItems.map((el) =>
-        el.uuid === uuid ? { ...el, itemCount: el.itemCount - 1 } : el
-      )
-    );
-    setNumItems((currNumItems) => currNumItems - 1);
-  }
-
-  function getMaxItems() {
-    setItems((prevItems) =>
-      prevItems.map((el) =>
-        el.uuid === uuid ? { ...el, itemCount: itemLimit } : el
-      )
-    );
-    setNumItems(itemLimit);
-  }
-
-  function getMinItems() {
-    setItems((prevItems) =>
-      prevItems.map((el) => (el.uuid === uuid ? { ...el, itemCount: 0 } : el))
-    );
-    setNumItems(0);
-  }
+  useEffect(() => {
+    handleChange(numItems, uuid);
+  }, [numItems]);
 
   return (
     <div className="cardContainer">
@@ -45,12 +20,16 @@ const ItemCard = ({ itemLimit, id, uuid, itemName, setItems, itemCount }) => {
         type="button"
         className="minMaxButton"
         id="minButton"
-        onClick={getMinItems}
+        onClick={() => setNumItems(0)}
       >
         Min
       </button>
       <div className="itemName">{itemName}</div>
-      <button type="button" className="minMaxButton" onClick={getMaxItems}>
+      <button
+        type="button"
+        className="minMaxButton"
+        onClick={() => setNumItems(itemLimit)}
+      >
         Max
       </button>
       <text className={`itemLimit ${numItems > itemLimit ? 'redFont' : ''}`}>
@@ -60,7 +39,7 @@ const ItemCard = ({ itemLimit, id, uuid, itemName, setItems, itemCount }) => {
       <button
         type="button"
         className="roundButton decrement"
-        onClick={decrement}
+        onClick={() => setNumItems(numItems - 1)}
         disabled={numItems === 0}
       >
         <FaMinus size={100} />
@@ -72,27 +51,15 @@ const ItemCard = ({ itemLimit, id, uuid, itemName, setItems, itemCount }) => {
         }`}
         pattern="[0-9]*"
         type="number"
-        name={itemName}
-        id={`${id}${itemName}`}
-        value={itemCount}
-        onChange={(e) => {
-          console.log(e.target.value);
-          setItems((prevItems) =>
-            prevItems.map((el) =>
-              el.uuid === uuid
-                ? { ...el, itemCount: parseInt(0 || e.target.value, 10) }
-                : el
-            )
-          );
-          setNumItems((currNumItems) => 0 || e.target.value);
-        }}
+        value={numItems}
+        onChange={handleInputChange}
       />
       <button
         type="button"
         className="roundButton increment"
-        onClick={increment}
+        onClick={() => setNumItems(numItems + 1)}
       >
-        <FaPlus size={100} color="#4B4B4B" />
+        <FaPlus size={100} />
       </button>
     </div>
   );
@@ -101,19 +68,15 @@ const ItemCard = ({ itemLimit, id, uuid, itemName, setItems, itemCount }) => {
 export default ItemCard;
 
 ItemCard.propTypes = {
-  id: PropTypes.number,
+  uuid: PropTypes.string,
   itemName: PropTypes.string,
   itemLimit: PropTypes.number,
-  setItems: PropTypes.func,
-  itemCount: PropTypes.number,
-  uuid: PropTypes.string,
+  handleChange: PropTypes.func,
 };
 
 ItemCard.defaultProps = {
-  id: -1,
+  uuid: '',
   itemName: 'None',
   itemLimit: 0,
-  setItems: () => {},
-  uuid: '',
-  itemCount: 0,
+  handleChange: () => {},
 };

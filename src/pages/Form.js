@@ -56,6 +56,14 @@ const Form = () => {
     });
   }, []);
 
+  const handleChange = (count, uuid) => {
+    setItems((prevItems) =>
+      prevItems.map((el) =>
+        el.uuid === uuid ? { ...el, itemCount: count } : el
+      )
+    );
+  };
+
   return (
     <div className="pageContainer">
       <div className="header">
@@ -64,14 +72,12 @@ const Form = () => {
         {location && <h2 id="location-label">PENCIL - {location}</h2>}
       </div>
       <div className="formContainer">
-        {items.map((item, index) => (
+        {items.map((item) => (
           <ItemCard
-            id={index}
             uuid={item.uuid}
             itemName={item['Item.itemName']}
             itemLimit={item.maxLimit}
-            setItems={setItems}
-            itemCount={item.itemCount}
+            handleChange={handleChange}
           />
         ))}
         <Link className="submitLink" to="/submitted">
