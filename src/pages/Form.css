@@ -3,7 +3,7 @@
   font-size: 48px;
   background: #f3f3f3;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 .header {
@@ -35,10 +35,7 @@
 }
 
 .formContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  height: 100%;
   background: white;
   box-shadow: 0px 8px 20px 20px rgba(218, 218, 218, 0.25);
   border-radius: 3em 3em 0px 0px;
@@ -46,17 +43,16 @@
 }
 
 .cardContainer {
-  margin-top: 0.5em;
+  padding: 0.3em 0 1em 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.topRow {
-  width: 100%;
-  display: flex;
+  border-bottom: 5px solid #dcdcdc;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 0.3fr 1fr;
   align-items: center;
-  justify-content: space-between;
+  justify-items: center;
 }
 
 .itemName {
@@ -67,6 +63,12 @@
   margin-bottom: 1em;
   font-size: 0.9em;
   font-family: 'Roboto', sans-serif;
+  grid-column: 1 / 4;
+  grid-row: 2 / 3;
+}
+
+.redFont {
+  color: #f04747;
 }
 
 .itemCountContainer {
@@ -80,7 +82,7 @@
 }
 
 .itemCountInputBox {
-  width: 45%;
+  width: 75%;
   height: 100%;
   background: #f3f3f3;
   border: 4px solid #dcdcdc;
@@ -89,6 +91,11 @@
   text-align: center;
   font-size: 1em;
   font-family: inherit;
+  outline-width: 0;
+}
+
+.inputBoxRed {
+  border: 4px solid #f04747;
 }
 
 .roundButton {
@@ -101,12 +108,6 @@
   filter: saturate(150%);
 }
 
-.roundButton {
-  border-radius: 50%;
-  width: 40;
-  height: 40;
-}
-
 .minMaxButton {
   background: none;
   border: none;
@@ -115,8 +116,10 @@
   text-decoration: underline;
 }
 
-#incrementUp {
-  background-color: rgba(47, 181, 101, 0.5);
+.roundButton {
+  border-radius: 50%;
+  width: 40;
+  height: 40;
   border: None;
   display: flex;
   justify-content: center;
@@ -124,13 +127,18 @@
   padding: 3em;
 }
 
-#incrementDown {
+.increment {
+  background-color: rgba(47, 181, 101, 0.5);
+}
+
+.decrement {
   background-color: rgba(241, 189, 56, 0.6);
-  border: None;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 3em;
+}
+
+.decrement[disabled],
+.decrement:disabled {
+  background-color: #e5e5e5;
+  color: #b6b1b1;
 }
 
 #disabled {
@@ -140,12 +148,6 @@
   justify-content: center;
   align-items: center;
   padding: 3em;
-}
-
-.hozizontalLine {
-  width: 100%;
-  height: 5px;
-  background: #dcdcdc;
 }
 
 #submit {
