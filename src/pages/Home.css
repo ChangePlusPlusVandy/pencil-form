@@ -93,11 +93,6 @@ h2 {
   margin-bottom: 5px;
 }
 
-p {
-  margin: 2px;
-  font-family: 'Roboto', sans-serif;
-}
-
 /* Fixme have this button change according to contents of input box*/
 #submitButton {
   position: absolute;
@@ -181,6 +176,8 @@ p {
   top: 4vh;
   width: 100%;
   color: rgba(0, 0, 0, 0.75);
+  margin: 2px;
+  font-family: 'Roboto', sans-serif;
 }
 
 input[name='teacherid'] {
@@ -231,4 +228,6 @@ input[name='location'] {
   border-radius: 30px;
   color: rgb(95, 3, 3);
   padding: 20px;
+  margin: 2px;
+  font-family: 'Roboto', sans-serif;
 }
