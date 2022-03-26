@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import './Home.css';
 
 import { useAuth } from '../AuthContext';
-import { getTeacherByID } from './api-form';
+import { getTeacherByID, getAllLocations } from './api-form';
 // import { ReactComponent as PencilIcon } from '../assets/pencil-icon-2.svg';
 import PencilIcon from '../assets/pencil-icon-2.svg';
 
@@ -22,6 +25,7 @@ const Home = () => {
   const [teacherID, setTeacherID] = useState(''); // ID of teacher editable by form
   const [location, setLocation] = useState(''); // Location of teacher editable by form
   const [error, setError] = useState('');
+  const [locationArr, setLocationArr] = useState([]);
 
   /**
    * Gets teacher data if exists, or displays error if teacher doesn't exist.
@@ -49,6 +53,17 @@ const Home = () => {
     });
   };
 
+  useEffect(() => {
+    getAllLocations().then((result) => {
+      if (!result || result.error) {
+        console.log(result ? result.error : 'error');
+      } else {
+        console.log(result);
+        setLocationArr(result);
+      }
+    });
+  }, []);
+
   return (
     <div className="centered">
       <div id="background1" />
@@ -75,14 +90,20 @@ const Home = () => {
             autoComplete="off"
             onChange={(event) => setTeacherID(event.target.value)}
           />
-          <input
+          <select
             variant="outlined"
             name="location"
             placeholder="LOCATION"
             value={location}
             autoComplete="off"
+            className="selectLocation"
             onChange={(event) => setLocation(event.target.value)}
-          />
+          >
+            <option>Select a Location</option>
+            {locationArr.map((item) => (
+              <option value={item.name}>{item.name}</option>
+            ))}
+          </select>
           <br />
           {error && <p className="errorMessage">{error}</p>}
           <button id="submitButton" type="submit">

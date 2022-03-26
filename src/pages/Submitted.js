@@ -33,9 +33,9 @@ const Submitted = () => {
           clearTeacher();
         }}
       >
-        <Link className="link" to="/">
+        <a className="link" to="/">
           Back to home
-        </Link>
+        </a>
       </button>
     </div>
   );

@@ -197,7 +197,7 @@ input[name='teacherid'] {
   outline-color: #71c3e7;
 }
 
-input[name='location'] {
+select[name='location'] {
   position: absolute;
   top: 9em;
   left: 0%;
@@ -212,6 +212,8 @@ input[name='location'] {
   font-size: 1em;
   font-family: inherit;
   outline-color: #71c3e7;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.75);
 }
 
 #root {
@@ -224,7 +226,7 @@ input[name='location'] {
 .errorMessage {
   position: relative;
   background-color: rgb(255, 154, 154);
-  bottom: -300px;
+  bottom: -450px;
   border-radius: 30px;
   color: rgb(95, 3, 3);
   padding: 20px;

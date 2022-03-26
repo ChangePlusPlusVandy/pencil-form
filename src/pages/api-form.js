@@ -9,7 +9,7 @@
  * */
 const getTeacherByID = async (id) => {
   try {
-    const response = await fetch(`http://localhost:8080/api/teacher/${id}`);
+    const response = await fetch(`http://10.76.156.99:8080/api/teacher/${id}`);
     return await response.json();
   } catch (err) {
     console.log(err);
@@ -17,10 +17,21 @@ const getTeacherByID = async (id) => {
   }
 };
 
+const getAllLocations = async () => {
+  try {
+    const response = await fetch(
+      'http://10.76.156.99:8080/api/location/locations'
+    );
+    return await response.json();
+  } catch (err) {
+    return err;
+  }
+};
+
 const getShopForm = async (location) => {
   try {
     const response = await fetch(
-      `http://localhost:8080/api/${location}/form/getShopForm`
+      `http://10.76.156.99:8080/api/${location}/form/getShopForm`
     );
     const responseJson = await response.json();
     responseJson.forEach((element) => {
@@ -38,7 +49,7 @@ const submitForm = async (location, items) => {
     items.items = items.items.filter((item) => item.itemCount > 0);
 
     const response = await fetch(
-      `http://localhost:8080/api/${location}/transaction/submit`,
+      `http://10.76.156.99:8080/api/${location}/transaction/submit`,
       {
         method: 'POST',
         headers: {
@@ -53,4 +64,4 @@ const submitForm = async (location, items) => {
   }
 };
 
-export { getTeacherByID, getShopForm, submitForm };
+export { getTeacherByID, getShopForm, submitForm, getAllLocations };
