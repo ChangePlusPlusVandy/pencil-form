@@ -53,6 +53,7 @@ const ItemCard = ({ uuid, itemName, itemLimit, handleChange }) => {
         type="number"
         value={numItems}
         onChange={handleInputChange}
+        min="0"
       />
       <button
         type="button"
