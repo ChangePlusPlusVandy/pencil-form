@@ -20,17 +20,20 @@ export function useAuth() {
 export const AuthProvider = ({ children }) => {
   const [teacher, setTeacher] = useState();
   const [location, setLocation] = useState();
+  const [teacherFirstName, setTeacherFirstName] = useState();
 
   /**
    * Populates teacher information in state.
    * @param {Object} teacherInfo - Teacher information.
    * */
   function populateTeacher(teacherInfo) {
+    setTeacherFirstName(teacherInfo.split(' ')[0]);
     setTeacher(teacherInfo);
   }
 
   // Clears teacher information in state.
   function clearTeacher() {
+    setTeacherFirstName(null);
     setTeacher(null);
   }
 
@@ -48,6 +51,7 @@ export const AuthProvider = ({ children }) => {
       teacher,
       populateTeacher,
       clearTeacher,
+      teacherFirstName,
       location,
       populateLocation,
       clearLocation,
@@ -56,6 +60,7 @@ export const AuthProvider = ({ children }) => {
       teacher,
       populateTeacher,
       clearTeacher,
+      teacherFirstName,
       location,
       populateLocation,
       clearLocation,
