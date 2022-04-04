@@ -10,13 +10,13 @@ import { useAuth } from '../AuthContext';
  * @returns {Object} - Page containing success page.
  * */
 const Submitted = () => {
-  const { clearTeacher, teacher } = useAuth();
+  const { clearTeacher, teacher, teacherFirstName } = useAuth();
 
   return (
     <div className="submitted">
       {teacher && (
         <p id="thanks">
-          Thank you for shopping with PENCIL, {teacher.firstName}!
+          Thank you for shopping with PENCIL, {teacherFirstName}!
         </p>
       )}
       <br />

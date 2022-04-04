@@ -171,7 +171,7 @@ const ItemCard = ({ itemLimit, id, uuid, itemName, setItems, itemCount }) => {
 };
 
 const Form = () => {
-  const { teacher, location } = useAuth();
+  const { teacher, location, teacherFirstName } = useAuth();
   const [items, setItems] = useState([]);
   const submitAll = () => {
     const completeObj = {
@@ -198,7 +198,7 @@ const Form = () => {
     <div className="pageContainer">
       <div className="header">
         <img src={PencilIcon} id="form-pencil-icon" alt="a cartoon pencil" />
-        {teacher && <h1 id="form-greeting">Welcome, {teacher.firstName}!</h1>}
+        {teacher && <h1 id="form-greeting">Welcome, {teacherFirstName}!</h1>}
         {location && <h2 id="location-label">PENCIL - {location}</h2>}
       </div>
       <div className="formContainer">
