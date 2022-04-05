@@ -45,7 +45,6 @@ const Home = () => {
       else {
         // history.push(`/form/${teacherID}`);
         setError('');
-        console.log(data, location, 'ugh');
         populateTeacher(data);
         populateLocation(location);
         history.push(`/form`);
