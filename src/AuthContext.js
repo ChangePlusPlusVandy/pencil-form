@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
    * @param {Object} teacherInfo - Teacher information.
    * */
   function populateTeacher(teacherInfo) {
-    setTeacherFirstName(teacherInfo.split(' ')[0]);
+    setTeacherFirstName(teacherInfo.name.split(' ')[0]);
     setTeacher(teacherInfo);
   }
 

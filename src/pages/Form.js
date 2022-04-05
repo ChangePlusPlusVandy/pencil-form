@@ -15,6 +15,7 @@ const Form = () => {
   const { teacher, location, teacherFirstName } = useAuth();
   const [items, setItems] = useState([]);
   const submitAll = () => {
+    console.log(teacher, 'meh');
     const completeObj = {
       teacherId: teacher.pencilId,
       locationId: location,
