@@ -38,22 +38,23 @@ const Home = () => {
    * */
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (teacherID === '' || teacherLocation === '') {
-      // eslint-disable-next-line no-alert
-      alert('Please fill out all fields.');
-      return;
+    console.log(teacherLocation);
+    if (teacherID === '') {
+      setError('Pencil ID is required.');
+    } else if (!teacherLocation) {
+      setError('Location is required.');
+    } else {
+      getTeacherByID(teacherID).then((data) => {
+        console.log(data);
+        if (data.error) setError(data.error);
+        else {
+          setError('');
+          populateTeacher(data);
+          populateLocation(teacherLocation);
+          history.push(`/form`);
+        }
+      });
     }
-    getTeacherByID(teacherID).then((data) => {
-      console.log(data);
-      if (data.error) setError(data.error);
-      else {
-        // history.push(`/form/${teacherID}`);
-        setError('');
-        populateTeacher(data);
-        populateLocation(teacherLocation);
-        history.push(`/form`);
-      }
-    });
   };
 
   useEffect(() => {
@@ -102,7 +103,9 @@ const Home = () => {
             className="selectLocation"
             onChange={(event) => setTeacherLocation(event.target.value)}
           >
-            <option>Select a Location</option>
+            <option value="" disabled="disabled" selected="selected">
+              Select a Location
+            </option>
             {locationArr.map((item) => (
               <option value={item.name}>{item.name}</option>
             ))}
