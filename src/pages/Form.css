@@ -103,10 +103,15 @@
   border-radius: 50%;
   height: 10em;
   width: 10em;
+  cursor: pointer;
 }
 
 .roundButton:active {
   filter: saturate(150%);
+}
+
+.roundButton:disabled {
+  cursor: not-allowed;
 }
 
 .minMaxButton {
@@ -115,6 +120,7 @@
   font-size: 0.8em;
   color: #71c3e7;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .roundButton {
