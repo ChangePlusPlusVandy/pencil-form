@@ -185,3 +185,25 @@ a {
 .noselect:focus {
   outline-width: 0;
 }
+
+@media only screen and (device-width: 768px) {
+  #form-greeting {
+    font-size: 1.6em;
+    transform: translateY(30%);
+  }
+
+  #location-label {
+    transform: translateY(-50%) translateX(-11%);
+  }
+}
+
+@media only screen and (device-width: 820px) {
+#form-greeting {
+  font-size: 1.6em;
+  transform: translateY(30%);
+}
+
+#location-label {
+  transform: translateY(-50%) translateX(-11%);
+}
+}

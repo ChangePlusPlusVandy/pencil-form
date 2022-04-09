@@ -84,12 +84,8 @@
   }
 }
 
-h1 {
-  margin: 2px;
-}
-
 h2 {
-  margin-top: 20px;
+  margin-top: 2%;
   margin-bottom: 5px;
 }
 
@@ -232,4 +228,35 @@ select[name='location'] {
   padding: 20px;
   margin: 2px;
   font-family: 'Roboto', sans-serif;
+}
+
+
+@media only screen and (device-width: 768px) {
+  #pencil-icon {
+    height: 140%;
+  }
+
+  #welcomeMessage {
+    top: 3em;
+    left: 3em;
+  }
+
+  h2 {
+    margin-top: 0em;
+  }
+}
+
+@media only screen and (device-width: 820px) {
+  #pencil-icon {
+    height: 140%;
+  }
+  
+  #welcomeMessage {
+    top: 3em;
+    left: 3em;
+  }
+  
+  h2 {
+    margin-top: 0em;
+  }
 }
