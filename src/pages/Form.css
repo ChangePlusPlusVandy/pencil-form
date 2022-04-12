@@ -233,3 +233,26 @@ a {
     margin-left: -13em;
   }
 }
+
+/* ----------- Retina Screens ----------- */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+  #form-pencil-icon {
+    left: 20%;
+  }
+  
+  .header {
+    margin: 0;
+    padding-top: 0;
+  }
+  
+  #form-greeting {
+    font-size: 1.6em;
+    transform: translateY(30%);
+    margin-left: -0.25em;
+  }
+  
+  #location-label {
+    transform: translateY(-50%) translateX(10%);
+    margin-left: -13em;
+  }
+  }

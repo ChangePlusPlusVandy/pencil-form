@@ -174,3 +174,38 @@
         height: 22em;
     }
 }
+
+/* ----------- Retina Screens ----------- */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+
+    #thanks {
+        margin-top: 1.5em;
+        font-size: 2.5em;
+    }
+    
+    .firstLine {
+        visibility: hidden;
+    }
+    
+    .pencilIcon {
+        width: 80%;
+        left: 27.5%;
+        height: 25em;
+        margin-top: -5em;
+        z-index: 1;
+    }
+    
+    .secondLine {
+        visibility: hidden;
+    }
+    
+    .backHome {
+        margin: 0em;
+        position: relative;
+        top: 0em;
+    }
+    
+    .fullPencil {
+        height: 22em;
+    }
+}
