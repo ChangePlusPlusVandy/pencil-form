@@ -85,7 +85,7 @@ const Home = () => {
           <p id="label">
             Please enter your PENCIL ID and location to get started.
           </p>
-          <br />
+          <br id="desktopBr" />
           <input
             variant="outlined"
             name="teacherid"

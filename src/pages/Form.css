@@ -195,15 +195,41 @@ a {
   #location-label {
     transform: translateY(-50%) translateX(-11%);
   }
+
+  #submit {
+    z-index: 3;
+  }
 }
 
 @media only screen and (device-width: 820px) {
-#form-greeting {
-  font-size: 1.6em;
-  transform: translateY(30%);
+  #form-greeting {
+    font-size: 1.6em;
+    transform: translateY(30%);
+  }
+
+  #location-label {
+    transform: translateY(-50%) translateX(-11%);
+  }
 }
 
-#location-label {
-  transform: translateY(-50%) translateX(-11%);
-}
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  #form-pencil-icon {
+    left: 20%;
+  }
+
+  .header{
+    margin: 0;
+    padding-top: 0;
+  }
+
+  #form-greeting {
+    font-size: 1.6em;
+    transform: translateY(30%);
+    margin-left: -0.25em;
+  }
+  
+  #location-label {
+    transform: translateY(-50%) translateX(10%);
+    margin-left: -13em;
+  }
 }

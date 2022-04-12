@@ -244,6 +244,10 @@ select[name='location'] {
   h2 {
     margin-top: 0em;
   }
+
+  #submitButton {
+    z-index: 3;
+  }
 }
 
 @media only screen and (device-width: 820px) {
@@ -258,5 +262,196 @@ select[name='location'] {
   
   h2 {
     margin-top: 0em;
+  }
+
+  #submitButton {
+    z-index: 3;
+  }
+}
+
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  #background1 {
+    background-size: 15em;
+    background-position-x: 100%;
+    background-position-y: 0px;
+    height: 45%;
+  }
+  
+  #background2 {
+    background-size: 25em;
+    background-position-y: .5em;
+    height: 45%;
+    width: 58%;
+  }
+  
+  #line1 {
+    background-size: 13em;
+    background-position-y: 0em;
+    background-position-x: -2em;
+    padding: 0 0;
+    height: 100%;
+    width: 100%;
+  }
+  
+  #line2 {
+    background-size: 18em;
+    background-position-y: 0.8em;
+    background-position-x: -2.9em;
+    height: 100%;
+    width: 100%;
+    left: 16em;
+    top: -2.6em;
+  }
+  
+  h2 {
+    margin-top: 0%;
+    margin-bottom: 5px;
+  }
+  
+  /* Fixme have this button change according to contents of input box*/
+  #submitButton {
+    font-size: 0.7em;
+    padding: 0.4em 2vw 0.4em 3vw;
+    height: 1.8em;
+    z-index: 3;
+  }
+  
+  #welcomeMessage {
+    width: 40%;
+    top: 1em;
+    left: 10em;
+  }
+  
+  #pencil-icon {
+    width: 35%;
+    left: 0;
+    top: 0.2em;
+    height: 165%;
+  }
+  
+  #pencil {
+    font-size: 2em;
+    top: 50%;
+    left: 20%;
+  }
+
+  /* FIXME: rename */
+  #label {
+    font-size: 0.7em;
+  }
+
+  input[name='teacherid']{
+    font-size: 0.45em;
+    margin-top: 0;
+    top: 4em;
+    height: 3.2em;
+    z-index: 3;
+  }
+
+  select[name='location'] {
+    top: 7.5em;
+    font-size: 0.45em;
+    height: 3.2em;
+    z-index: 3;
+  }
+
+  .errorMessage {
+    bottom: -125px;
+    padding: 20px;
+    font-size: 0.6em;
+  }
+}
+
+/* ----------- Retina Screens ----------- */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+  #background1 {
+    background-size: 15em;
+    background-position-x: 100%;
+    background-position-y: 0px;
+    height: 45%;
+  }
+  
+  #background2 {
+    background-size: 25em;
+    background-position-y: .5em;
+    height: 45%;
+    width: 58%;
+  }
+  
+  #line1 {
+    background-size: 13em;
+    background-position-y: 0em;
+    background-position-x: -2em;
+    padding: 0 0;
+    height: 100%;
+    width: 100%;
+  }
+  
+  #line2 {
+    background-size: 18em;
+    background-position-y: 0.8em;
+    background-position-x: -2.9em;
+    height: 100%;
+    width: 100%;
+    left: 16em;
+    top: -2.6em;
+  }
+  
+  h2 {
+    margin-top: 0%;
+    margin-bottom: 5px;
+  }
+  
+  /* Fixme have this button change according to contents of input box*/
+  #submitButton {
+    font-size: 0.7em;
+    padding: 0.4em 2vw 0.4em 3vw;
+    height: 1.8em;
+    z-index: 3;
+  }
+  
+  #welcomeMessage {
+    width: 40%;
+    top: 1em;
+    left: 10em;
+  }
+  
+  #pencil-icon {
+    width: 35%;
+    left: 0;
+    top: 0.2em;
+    height: 165%;
+  }
+  
+  #pencil {
+    font-size: 2em;
+    top: 50%;
+    left: 20%;
+  }
+  
+  /* FIXME: rename */
+  #label {
+    font-size: 0.7em;
+  }
+  
+  input[name='teacherid'] {
+    font-size: 0.45em;
+    margin-top: 0;
+    top: 4em;
+    height: 3.2em;
+    z-index: 3;
+  }
+  
+  select[name='location'] {
+    top: 7.5em;
+    font-size: 0.45em;
+    height: 3.2em;
+    z-index: 3;
+  }
+  
+  .errorMessage {
+    bottom: -125px;
+    padding: 20px;
+    font-size: 0.6em;
   }
 }
