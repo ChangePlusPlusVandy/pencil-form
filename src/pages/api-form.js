@@ -9,7 +9,7 @@
  * */
 const getTeacherByID = async (id) => {
   try {
-    const response = await fetch(`http://localhost:8080/api/teacher/${id}`);
+    const response = await fetch(`api/teacher/${id}`);
     return await response.json();
   } catch (err) {
     console.log(err);
@@ -19,9 +19,7 @@ const getTeacherByID = async (id) => {
 
 const getAllLocations = async () => {
   try {
-    const response = await fetch(
-      'http://localhost:8080/api/location/locations'
-    );
+    const response = await fetch('api/location/locations');
     return await response.json();
   } catch (err) {
     return err;
@@ -30,9 +28,7 @@ const getAllLocations = async () => {
 
 const getShopForm = async (location) => {
   try {
-    const response = await fetch(
-      `http://localhost:8080/api/${location}/form/getShopForm`
-    );
+    const response = await fetch(`api/${location}/form/getShopForm`);
     const responseJson = await response.json();
     responseJson.forEach((element) => {
       element.itemCount = 0;
@@ -48,16 +44,13 @@ const submitForm = async (location, items) => {
     // remove items which weren't taken
     items.items = items.items.filter((item) => item.itemCount > 0);
 
-    const response = await fetch(
-      `http://localhost:8080/api/${location}/transaction/submit`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(items),
-      }
-    );
+    const response = await fetch(`api/${location}/transaction/submit`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(items),
+    });
     return await response.json();
   } catch (err) {
     console.log(err);
