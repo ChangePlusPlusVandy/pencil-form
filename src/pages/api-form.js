@@ -10,7 +10,7 @@
 const getTeacherByID = async (id) => {
   try {
     const response = await fetch(
-      `http://ec2-3-23-87-120.us-east-2.compute.amazonaws.com:8080/api/teacher/${id}`
+      `http://ec2-3-130-177-151.us-east-2.compute.amazonaws.com:8080/api/teacher/${id}`
     );
     return await response.json();
   } catch (err) {
@@ -22,7 +22,7 @@ const getTeacherByID = async (id) => {
 const getAllLocations = async () => {
   try {
     const response = await fetch(
-      'http://ec2-3-23-87-120.us-east-2.compute.amazonaws.com:8080/api/location/locations'
+      'http://ec2-3-130-177-151.us-east-2.compute.amazonaws.com:8080/api/location/locations'
     );
     return await response.json();
   } catch (err) {
@@ -33,7 +33,7 @@ const getAllLocations = async () => {
 const getShopForm = async (location) => {
   try {
     const response = await fetch(
-      `http://ec2-3-23-87-120.us-east-2.compute.amazonaws.com:8080/api/${location}/form/getShopForm`
+      `http://ec2-3-130-177-151.us-east-2.compute.amazonaws.com:8080/api/${location}/form/getShopForm`
     );
     const responseJson = await response.json();
     responseJson.forEach((element) => {

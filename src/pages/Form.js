@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Form.css';
 import { useAuth } from '../AuthContext';
-import PencilIcon from '../assets/pencil-icon-2.svg';
+// import PencilIcon from '../assets/pencil-icon-2.svg';
 import { getShopForm, submitForm } from './api-form';
 import ItemCard from './ItemCard';
 
@@ -67,7 +67,7 @@ const Form = () => {
   return (
     <div className="pageContainer">
       <div className="header">
-        <img src={PencilIcon} id="form-pencil-icon" alt="a cartoon pencil" />
+        {/* <img src={PencilIcon} id="form-pencil-icon" alt="a cartoon pencil" /> */}
         {teacher && <h1 id="form-greeting">Welcome, {teacherFirstName}!</h1>}
         {location && <h2 id="location-label">PENCIL - {location}</h2>}
       </div>

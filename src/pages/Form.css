@@ -11,8 +11,8 @@
   text-align: center;
   padding: 1em;
   margin-bottom: 0.8em;
-  left: 10%;
-  width: 80%;
+  /* left: 10%; */
+  /* width: 80%; */
 }
 
 #form-pencil-icon {
@@ -30,7 +30,7 @@
 #location-label {
   font-family: 'Roboto';
   font-size: 0.88em;
-  transform: translateY(99%) translateX(-11%);
+  transform: translateY(80%);
   opacity: 60%;
 }
 
@@ -136,10 +136,12 @@
 
 .increment {
   background-color: rgba(47, 181, 101, 0.5);
+  color:black;
 }
 
 .decrement {
   background-color: rgba(241, 189, 56, 0.6);
+  color:black;
 }
 
 .decrement[disabled],
