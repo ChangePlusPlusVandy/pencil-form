@@ -9,7 +9,9 @@
  * */
 const getTeacherByID = async (id) => {
   try {
-    const response = await fetch(`api/teacher/${id}`);
+    const response = await fetch(
+      `http://ec2-3-23-87-120.us-east-2.compute.amazonaws.com:8080/api/teacher/${id}`
+    );
     return await response.json();
   } catch (err) {
     console.log(err);
@@ -19,7 +21,9 @@ const getTeacherByID = async (id) => {
 
 const getAllLocations = async () => {
   try {
-    const response = await fetch('api/location/locations');
+    const response = await fetch(
+      'http://ec2-3-23-87-120.us-east-2.compute.amazonaws.com:8080/api/location/locations'
+    );
     return await response.json();
   } catch (err) {
     return err;
@@ -28,7 +32,9 @@ const getAllLocations = async () => {
 
 const getShopForm = async (location) => {
   try {
-    const response = await fetch(`api/${location}/form/getShopForm`);
+    const response = await fetch(
+      `http://ec2-3-23-87-120.us-east-2.compute.amazonaws.com:8080/api/${location}/form/getShopForm`
+    );
     const responseJson = await response.json();
     responseJson.forEach((element) => {
       element.itemCount = 0;
