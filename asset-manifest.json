@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/pencil-form/static/css/main.db0908a8.chunk.css",
+    "main.js": "/pencil-form/static/js/main.e9769e01.chunk.js",
+    "main.js.map": "/pencil-form/static/js/main.e9769e01.chunk.js.map",
+    "runtime-main.js": "/pencil-form/static/js/runtime-main.7aee52de.js",
+    "runtime-main.js.map": "/pencil-form/static/js/runtime-main.7aee52de.js.map",
+    "static/js/2.b2723355.chunk.js": "/pencil-form/static/js/2.b2723355.chunk.js",
+    "static/js/2.b2723355.chunk.js.map": "/pencil-form/static/js/2.b2723355.chunk.js.map",
+    "index.html": "/pencil-form/index.html",
+    "static/css/main.db0908a8.chunk.css.map": "/pencil-form/static/css/main.db0908a8.chunk.css.map",
+    "static/js/2.b2723355.chunk.js.LICENSE.txt": "/pencil-form/static/js/2.b2723355.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/pencil-form/static/media/Roboto-Regular.a8d6ac03.ttf",
+    "static/media/Submitted.css": "/pencil-form/static/media/pencil-icon.9e09f33d.svg",
+    "static/media/Roboto-Medium.7429a63c.ttf": "/pencil-form/static/media/Roboto-Medium.7429a63c.ttf",
+    "static/media/Home.css": "/pencil-form/static/media/welcome-background-2.5cad7714.svg",
+    "static/media/pencil-icon-2.f7c1ee4b.svg": "/pencil-form/static/media/pencil-icon-2.f7c1ee4b.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7aee52de.js",
+    "static/js/2.b2723355.chunk.js",
+    "static/css/main.db0908a8.chunk.css",
+    "static/js/main.e9769e01.chunk.js"
+  ]
+}
