@@ -80,43 +80,50 @@ const Home = () => {
         <h1 id="pencil">PENCIL</h1>
       </div>
       <br />
-      <div className="idFormBox">
-        <form onSubmit={handleSubmit} id="idForm">
-          <p id="label">
-            Please enter your PENCIL ID and location to get started.
-          </p>
-          <br id="desktopBr" />
-          <input
-            variant="outlined"
-            name="teacherid"
-            placeholder="PENCIL ID"
-            value={teacherID}
-            autoComplete="off"
-            onChange={(event) => setTeacherID(event.target.value)}
-          />
-          <select
-            variant="outlined"
-            name="location"
-            placeholder="LOCATION"
-            value={teacherLocation}
-            autoComplete="off"
-            className="selectLocation"
-            onChange={(event) => setTeacherLocation(event.target.value)}
-          >
-            <option value="" disabled="disabled" selected="selected">
-              Select a Location
-            </option>
-            {locationArr.map((item) => (
-              <option value={item.name}>{item.name}</option>
-            ))}
-          </select>
-          <br />
-          {error && <p className="errorMessage">{error}</p>}
-          <button id="submitButton" type="submit">
-            Submit
-          </button>
-        </form>
-      </div>
+      {locationArr.length > 0 ? (
+        <div className="idFormBox">
+          <form onSubmit={handleSubmit} id="idForm">
+            <p id="label">
+              Please enter your PENCIL ID and location to get started.
+            </p>
+            <br id="desktopBr" />
+            <input
+              variant="outlined"
+              name="teacherid"
+              placeholder="PENCIL ID"
+              value={teacherID}
+              autoComplete="off"
+              onChange={(event) => setTeacherID(event.target.value)}
+            />
+            <select
+              variant="outlined"
+              name="location"
+              placeholder="LOCATION"
+              value={teacherLocation}
+              autoComplete="off"
+              className="selectLocation"
+              onChange={(event) => setTeacherLocation(event.target.value)}
+            >
+              <option value="" disabled="disabled" selected="selected">
+                Select a Location
+              </option>
+              {locationArr.map((item) => (
+                <option value={item.name}>{item.name}</option>
+              ))}
+            </select>
+            <br />
+            {error && <p className="errorMessage">{error}</p>}
+            <button id="submitButton" type="submit">
+              Submit
+            </button>
+          </form>
+        </div>
+      ) : (
+        <p>
+          Something has went wrong. Unable to query the locations from the
+          database. Please contact the developers
+        </p>
+      )}
     </div>
   );
 };
