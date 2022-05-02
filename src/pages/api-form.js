@@ -53,7 +53,7 @@ const submitForm = async (location, items) => {
     });
     return await response.json();
   } catch (err) {
-    console.log(err);
+    Promise.reject(err);
   }
 };
 

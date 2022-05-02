@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './Form.css';
 import { useAuth } from '../AuthContext';
 // import PencilIcon from '../assets/pencil-icon-2.svg';
@@ -14,7 +14,8 @@ import ItemCard from './ItemCard';
 const Form = () => {
   const { teacher, location, teacherFirstName } = useAuth();
   const [items, setItems] = useState([]);
-  const submitAll = () => {
+  const history = useHistory();
+  const submitAll = async () => {
     const completeObj = {
       teacherId: teacher.pencilId,
       locationId: location,
@@ -22,7 +23,7 @@ const Form = () => {
       items,
     };
 
-    submitForm(location, completeObj);
+    await submitForm(location, completeObj).then(history.push('/submitted'));
   };
 
   function goodbye(e) {
@@ -80,11 +81,11 @@ const Form = () => {
             handleChange={handleChange}
           />
         ))}
-        <Link className="submitLink" to="/submitted">
+        <div className="submitLink">
           <button type="submit" id="submit" onClick={submitAll}>
             Submit
           </button>
-        </Link>
+        </div>
       </div>
     </div>
   );

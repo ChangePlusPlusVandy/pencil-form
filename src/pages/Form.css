@@ -176,6 +176,11 @@
   transform: translateY(2px);
 }
 
+#cantLoad {
+  padding: 120px 20px;
+  color: #f04747;
+}
+
 a {
   text-decoration: none;
 }

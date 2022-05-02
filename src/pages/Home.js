@@ -80,8 +80,8 @@ const Home = () => {
         <h1 id="pencil">PENCIL</h1>
       </div>
       <br />
-      {locationArr.length > 0 ? (
-        <div className="idFormBox">
+      <div className="idFormBox">
+        {locationArr.length > 0 ? (
           <form onSubmit={handleSubmit} id="idForm">
             <p id="label">
               Please enter your PENCIL ID and location to get started.
@@ -117,13 +117,12 @@ const Home = () => {
               Submit
             </button>
           </form>
-        </div>
-      ) : (
-        <p>
-          Something has went wrong. Unable to query the locations from the
-          database. Please contact the developers
-        </p>
-      )}
+        ) : (
+          <p id="cantLoad">
+            Unable to retrieve locations. Please contact the developer team.
+          </p>
+        )}
+      </div>
     </div>
   );
 };
