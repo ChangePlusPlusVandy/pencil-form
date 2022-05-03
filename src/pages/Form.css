@@ -159,7 +159,7 @@
   padding: 3em;
 }
 
-#submit {
+#submitButton {
   font-size: 1em;
   padding: 0.5em 4em 0.5em 4em;
   margin: 1em 0em 1em 0em;
@@ -172,7 +172,7 @@
   font-family: inherit;
 }
 
-#submit:active {
+#submitButton:active {
   transform: translateY(2px);
 }
 
@@ -203,7 +203,7 @@ a {
     transform: translateY(-50%) translateX(-11%);
   }
 
-  #submit {
+  #submitButton {
     z-index: 3;
   }
 }

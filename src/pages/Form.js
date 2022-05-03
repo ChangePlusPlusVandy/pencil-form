@@ -14,16 +14,28 @@ import ItemCard from './ItemCard';
 const Form = () => {
   const { teacher, location, teacherFirstName } = useAuth();
   const [items, setItems] = useState([]);
+  const [error, setError] = useState('');
+  const [shopFormError, setShopFormError] = useState(false);
   const history = useHistory();
-  const submitAll = async () => {
+  const submitAll = async (e) => {
+    e.preventDefault();
     const completeObj = {
       teacherId: teacher.pencilId,
       locationId: location,
       schoolId: teacher.School.uuid || 2, // TODO: Use real school id
       items,
     };
-
-    await submitForm(location, completeObj).then(history.push('/submitted'));
+    try {
+      await submitForm(location, completeObj).then(() =>
+        history.push('/submitted')
+      );
+    } catch (err) {
+      setError(
+        err.response.data && Object.keys(err.response.data).length
+          ? err.response.data
+          : 'Unable to process request. Please contact the administrator.'
+      );
+    }
   };
 
   function goodbye(e) {
@@ -47,14 +59,20 @@ const Form = () => {
     };
   }, []);
 
-  useEffect(() => {
-    getShopForm(location).then((result) => {
-      if (!result || result.error) {
-        console.log(result ? result.error : 'error');
-      } else {
+  useEffect(async () => {
+    try {
+      await getShopForm(location).then((result) => {
         setItems(result);
-      }
-    });
+        setShopFormError(false);
+      });
+    } catch (err) {
+      setError(
+        err.response.data && Object.keys(err.response.data).length
+          ? err.response.data
+          : 'Unable to process request. Please contact the administrator.'
+      );
+      setShopFormError(true);
+    }
   }, []);
 
   const handleChange = (count, uuid) => {
@@ -81,10 +99,24 @@ const Form = () => {
             handleChange={handleChange}
           />
         ))}
+        {error && <p className="errorMessage">{error}</p>}
         <div className="submitLink">
-          <button type="submit" id="submit" onClick={submitAll}>
-            Submit
-          </button>
+          {shopFormError ? (
+            <button
+              type="submit"
+              id="submitButton"
+              onClick={(e) => {
+                e.preventDefault();
+                history.push('/');
+              }}
+            >
+              Back
+            </button>
+          ) : (
+            <button type="submit" id="submitButton" onClick={submitAll}>
+              Submit
+            </button>
+          )}
         </div>
       </div>
     </div>
