@@ -1,6 +1,8 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-param-reassign */
 
+import axios from '../axios';
+
 /**
  * Makes GET request to API to get teacher information.
  * @param  {string} id - Teacher ID to be queried by backend.
@@ -9,51 +11,50 @@
  * */
 const getTeacherByID = async (id) => {
   try {
-    const response = await fetch(`/api/teacher/${id}`);
-    return await response.json();
+    const response = await axios.get(`/teacher/${id}`);
+    return response.data;
   } catch (err) {
-    console.log(err);
-    return { error: 'Teacher Not Found' };
+    return Promise.reject(err);
   }
 };
 
 const getAllLocations = async () => {
   try {
-    const response = await fetch('/api/location/locations');
-    return await response.json();
+    const response = await axios.get('/location/locations');
+    return response.data;
   } catch (err) {
-    return err;
+    return Promise.reject(err);
   }
 };
 
 const getShopForm = async (location) => {
   try {
-    const response = await fetch(`/api/${location}/form/getShopForm`);
-    const responseJson = await response.json();
-    responseJson.forEach((element) => {
+    const response = await axios.get(`/${location}/form/getShopForm`);
+    response.data.forEach((element) => {
       element.itemCount = 0;
     });
-    return responseJson;
+    return response.data;
   } catch (err) {
-    console.log(err);
+    return Promise.reject(err);
   }
 };
 
 const submitForm = async (location, items) => {
+  // remove items which weren't taken
+  items.items = items.items.filter((item) => item.itemCount > 0);
   try {
-    // remove items which weren't taken
-    items.items = items.items.filter((item) => item.itemCount > 0);
-
-    const response = await fetch(`api/${location}/transaction/submit`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(items),
-    });
-    return await response.json();
+    const response = await axios.post(
+      `/${location}/transaction/submit`,
+      items,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+    return response.data;
   } catch (err) {
-    Promise.reject(err);
+    return Promise.reject(err);
   }
 };
 

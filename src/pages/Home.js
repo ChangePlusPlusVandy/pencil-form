@@ -36,7 +36,7 @@ const Home = () => {
    *
    * @param {Object} event - Event object.
    * */
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(teacherLocation);
     if (teacherID === '') {
@@ -44,16 +44,21 @@ const Home = () => {
     } else if (!teacherLocation) {
       setError('Location is required.');
     } else {
-      getTeacherByID(teacherID).then((data) => {
-        console.log(data);
-        if (data.error) setError(data.error);
-        else {
+      try {
+        await getTeacherByID(teacherID).then((data) => {
+          console.log(data);
           setError('');
           populateTeacher(data);
           populateLocation(teacherLocation);
           history.push(`/form`);
-        }
-      });
+        });
+      } catch (err) {
+        setError(
+          err.response.data && Object.keys(err.response.data).length
+            ? err.response.data
+            : 'Unable to process request. Please contact the administrator.'
+        );
+      }
     }
   };
 
@@ -112,8 +117,8 @@ const Home = () => {
               ))}
             </select>
             <br />
-            {error && <p className="errorMessage">{error}</p>}
-            <button id="submitButton" type="submit">
+            {error && <p className="errorMessage errorHome">{error}</p>}
+            <button className="submitButton" type="submit">
               Submit
             </button>
           </form>

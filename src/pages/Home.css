@@ -90,7 +90,7 @@ h2 {
 }
 
 /* Fixme have this button change according to contents of input box*/
-#submitButton {
+.submitButton {
   position: absolute;
   bottom: 18%;
   font-size: 1em;
@@ -221,13 +221,17 @@ select[name='location'] {
 
 .errorMessage {
   position: relative;
-  background-color: rgb(255, 154, 154);
-  bottom: -450px;
+  background-color: #ff9a9a;
+  bottom: -25px;
   border-radius: 30px;
   color: rgb(95, 3, 3);
   padding: 20px;
   margin: 2px;
   font-family: 'Roboto', sans-serif;
+}
+
+.errorHome {
+  bottom: -425px;
 }
 
 
@@ -245,7 +249,7 @@ select[name='location'] {
     margin-top: 0em;
   }
 
-  #submitButton {
+  .submitButton {
     z-index: 3;
   }
 }
@@ -264,7 +268,7 @@ select[name='location'] {
     margin-top: 0em;
   }
 
-  #submitButton {
+  .submitButton {
     z-index: 3;
   }
 }
@@ -309,7 +313,7 @@ select[name='location'] {
   }
   
   /* Fixme have this button change according to contents of input box*/
-  #submitButton {
+  .submitButton {
     font-size: 0.7em;
     padding: 0.4em 2vw 0.4em 3vw;
     height: 1.8em;
@@ -356,9 +360,13 @@ select[name='location'] {
   }
 
   .errorMessage {
-    bottom: -125px;
     padding: 20px;
     font-size: 0.6em;
+    bottom: -25px;
+  }
+
+  .errorHome {
+    bottom: -100px;
   }
 }
 
@@ -403,7 +411,7 @@ select[name='location'] {
   }
   
   /* Fixme have this button change according to contents of input box*/
-  #submitButton {
+  .submitButton {
     font-size: 0.7em;
     padding: 0.4em 2vw 0.4em 3vw;
     height: 1.8em;
@@ -450,8 +458,12 @@ select[name='location'] {
   }
   
   .errorMessage {
-    bottom: -125px;
+    bottom: -25px;
     padding: 20px;
     font-size: 0.6em;
+  }
+
+  .errorHome {
+    bottom: -100px;
   }
 }
