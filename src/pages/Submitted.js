@@ -1,7 +1,8 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
-
 import './Submitted.css';
 import { useAuth } from '../AuthContext';
+import SubmittedGraphic from '../assets/submitted.png';
 
 /**
  * Page that verifies success of form submission.
@@ -19,13 +20,14 @@ const Submitted = () => {
         </p>
       )}
       <br />
-      <div className="fullPencil">
-        <div className="secondLine" />
-        <div className="pencilIcon" />
-        <div className="firstLine" />
-      </div>
-      <button
-        type="button"
+      <img
+        className="submittedGraphic"
+        src={SubmittedGraphic}
+        alt="submitted"
+      />
+      <div
+        role="button"
+        tabIndex={0}
         className="backHome"
         variant="contained"
         onClick={() => {
@@ -35,7 +37,7 @@ const Submitted = () => {
         <a className="link" to="/">
           Back to home
         </a>
-      </button>
+      </div>
     </div>
   );
 };
