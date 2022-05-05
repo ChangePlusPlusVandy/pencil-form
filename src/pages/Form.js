@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './Form.css';
 import { useAuth } from '../AuthContext';
-// import PencilIcon from '../assets/pencil-icon-2.svg';
+import PencilIcon from '../assets/pencil-icon-2.svg';
 import { getShopForm, submitForm } from './api-form';
 import ItemCard from './ItemCard';
 
@@ -22,7 +22,7 @@ const Form = () => {
     const completeObj = {
       teacherId: teacher.pencilId,
       locationId: location,
-      schoolId: teacher.School.uuid || 2, // TODO: Use real school id
+      schoolId: teacher.School.uuid,
       items,
     };
     try {
@@ -86,9 +86,11 @@ const Form = () => {
   return (
     <div className="pageContainer">
       <div className="header">
-        {/* <img src={PencilIcon} id="form-pencil-icon" alt="a cartoon pencil" /> */}
-        {teacher && <h1 id="form-greeting">Welcome, {teacherFirstName}!</h1>}
-        {location && <h2 id="location-label">PENCIL - {location}</h2>}
+        <img src={PencilIcon} id="form-pencil-icon" alt="a cartoon pencil" />
+        <div>
+          {teacher && <h2 id="form-greeting">Welcome, {teacherFirstName}!</h2>}
+          {location && <h2 id="location-label">PENCIL - {location}</h2>}
+        </div>
       </div>
       <div className="formContainer">
         {items.map((item) => (
