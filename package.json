@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "http://ChangePlusPlusVandy.github.io/pencil-form",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.5.0",
